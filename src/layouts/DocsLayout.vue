@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Book, Home, Package, Settings, Users } from 'lucide-vue-next'
+import { Book, Home, Package, Settings, Users } from "lucide-vue-next";
 import {
   Sidebar,
   SidebarContent,
@@ -13,9 +13,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-  SidebarRail,
   SidebarTrigger,
-} from '@/components/ui/sidebar'
+} from "@/components/ui/sidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -23,8 +22,8 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
-import { Separator } from '@/components/ui/separator'
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
 
 // Menu items for the sidebar
 const items = [
@@ -53,7 +52,7 @@ const items = [
     url: "/docs/settings",
     icon: Settings,
   },
-]
+];
 </script>
 
 <template>
@@ -64,7 +63,9 @@ const items = [
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" as-child>
               <router-link to="/">
-                <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                <div
+                  class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
+                >
                   <Book class="size-4" />
                 </div>
                 <div class="grid flex-1 text-left text-sm leading-tight">
@@ -76,7 +77,7 @@ const items = [
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      
+
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Documentation</SidebarGroupLabel>
@@ -94,7 +95,7 @@ const items = [
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      
+
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -105,21 +106,19 @@ const items = [
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
-      
-      <SidebarRail />
     </Sidebar>
-    
+
     <SidebarInset>
-      <header class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+      <header
+        class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12"
+      >
         <div class="flex items-center gap-2 px-4">
           <SidebarTrigger class="-ml-1" />
           <Separator orientation="vertical" class="mr-2 h-4" />
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem class="hidden md:block">
-                <BreadcrumbLink href="/">
-                  Home
-                </BreadcrumbLink>
+                <BreadcrumbLink href="/"> Home </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator class="hidden md:block" />
               <BreadcrumbItem>
@@ -129,7 +128,7 @@ const items = [
           </Breadcrumb>
         </div>
       </header>
-      
+
       <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
         <router-view />
       </div>
