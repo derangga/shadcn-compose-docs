@@ -57,7 +57,7 @@ const items = [
 
 <template>
   <SidebarProvider>
-    <Sidebar variant="inset">
+    <Sidebar>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>

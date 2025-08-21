@@ -1,16 +1,41 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import { Moon, Sun } from "lucide-vue-next";
-import { Button } from "./ui/button";
-import { Github } from "./ui/icons";
-import { Separator } from "./ui/separator";
+import { ref, onMounted, computed } from "vue";
+import { Button } from "../ui/button";
+import { Github } from "../ui/icons";
+import { Separator } from "../ui/separator";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Menu } from "lucide-vue-next";
+import { useRoute } from "vue-router";
+import ButtonTheme from "./ButtonTheme.vue";
+import { cn } from "@/lib/utils";
 
+const route = useRoute();
 const isDark = ref(false);
 
-const toggleDarkMode = () => {
+const routes = [
+  { path: "/docs/installation", label: "Documentation" },
+  { path: "/docs/components", label: "Components" },
+];
+
+const pathname = computed(() => route.path);
+
+function toggleDarkMode() {
   isDark.value = !isDark.value;
   updateTheme();
-};
+}
 
 const updateTheme = () => {
   if (isDark.value) {
@@ -36,7 +61,7 @@ onMounted(() => {
     class="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60"
   >
     <div class="container mx-auto px-4 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-8">
+      <div class="hidden md:flex items-center space-x-4">
         <a href="#" class="flex items-center font-bold text-foreground gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -57,21 +82,56 @@ onMounted(() => {
           shadcn/compose
         </a>
 
-        <!-- Navigation Links -->
-        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
-          <router-link
-            to="/docs/installation"
-            class="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Documentation
-          </router-link>
-          <router-link
-            to="/docs/components"
-            class="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Components
-          </router-link>
-        </nav>
+        <!-- Desktop -->
+        <div class="hidden md:flex items-center space-x-4">
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem v-for="route in routes" :key="route.label">
+                <router-link :to="route.path" legacyBehavior passHref>
+                  <NavigationMenuLink
+                    :class="[
+                      navigationMenuTriggerStyle(),
+                      pathname === route.path && 'text-primary font-medium',
+                    ]"
+                  >
+                    {{ route.label }}
+                  </NavigationMenuLink>
+                </router-link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
+      </div>
+
+      <div class="flex md:hidden items-center space-x-4">
+        <Sheet>
+          <SheetTrigger as-child>
+            <Button variant="ghost" size="icon">
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Toggle menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left">
+            <SheetHeader>
+              <SheetTitle>Menu</SheetTitle>
+            </SheetHeader>
+            <nav className="flex flex-col gap-4 px-4">
+              <router-link
+                v-for="route in routes"
+                :key="route.label"
+                :to="route.path"
+                :class="
+                  cn(
+                    'py-1 text-lg hover:text-primary transition-colors flex flex-row gap-4',
+                    pathname === route.path && 'text-primary font-medium'
+                  )
+                "
+              >
+                {{ route.label }}
+              </router-link>
+            </nav>
+          </SheetContent>
+        </Sheet>
       </div>
 
       <div class="flex flex-row h-5 items-center gap-2">
@@ -84,15 +144,7 @@ onMounted(() => {
           <Github class="w-4 h-4" />
         </a>
         <Separator orientation="vertical" class="my-4" />
-        <Button
-          variant="ghost"
-          size="icon"
-          @click="toggleDarkMode"
-          aria-label="Toggle dark mode"
-        >
-          <Sun v-if="isDark" class="w-4 h-4" />
-          <Moon v-else class="w-4 h-4" />
-        </Button>
+        <ButtonTheme :is-dark="isDark" @click="toggleDarkMode" />
       </div>
     </div>
   </header>
