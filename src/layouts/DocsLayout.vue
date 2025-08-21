@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Book, Home, Package, Settings, Users } from "lucide-vue-next";
+import { Info, Package, Palette } from "lucide-vue-next";
+import { Android } from "@/components/ui/icons";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -24,13 +24,20 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
+import { useRoute } from "vue-router";
+import { computed } from "vue";
+import { cn } from "@/lib/utils";
+
+const route = useRoute();
+
+const pathname = computed(() => route.path);
 
 // Menu items for the sidebar
-const items = [
+const guideMenus = [
   {
-    title: "Getting Started",
-    url: "/docs/getting-started",
-    icon: Home,
+    title: "Introduction",
+    url: "/docs/introduction",
+    icon: Info,
   },
   {
     title: "Installation",
@@ -38,19 +45,108 @@ const items = [
     icon: Package,
   },
   {
-    title: "Components",
-    url: "/docs/components",
-    icon: Book,
+    title: "Theming",
+    url: "/docs/theming",
+    icon: Palette,
+  },
+];
+
+const componentMenus = [
+  {
+    title: "Accordion",
+    url: "/docs/components/accordion",
   },
   {
-    title: "Examples",
-    url: "/docs/examples",
-    icon: Users,
+    title: "Alert",
+    url: "/docs/components/alert",
   },
   {
-    title: "Settings",
-    url: "/docs/settings",
-    icon: Settings,
+    title: "Alert Dialog",
+    url: "#",
+  },
+  {
+    title: "Avatar",
+    url: "#",
+  },
+  {
+    title: "Badge",
+    url: "#",
+  },
+  {
+    title: "Bottom Sheet",
+    url: "#",
+  },
+  {
+    title: "Calendar",
+    url: "#",
+  },
+  {
+    title: "Card",
+    url: "#",
+  },
+  {
+    title: "Checkbox",
+    url: "#",
+  },
+  {
+    title: "Combobox",
+    url: "#",
+  },
+  {
+    title: "Date Picker",
+    url: "#",
+  },
+  {
+    title: "Dialog",
+    url: "#",
+  },
+  {
+    title: "Dropdown Menu",
+    url: "#",
+  },
+  {
+    title: "Input",
+    url: "#",
+  },
+  {
+    title: "Popover",
+    url: "#",
+  },
+  {
+    title: "Progress",
+    url: "#",
+  },
+  {
+    title: "Radio Group",
+    url: "#",
+  },
+  {
+    title: "Select",
+    url: "#",
+  },
+  {
+    title: "Skeleton",
+    url: "#",
+  },
+  {
+    title: "Select",
+    url: "#",
+  },
+  {
+    title: "Slider",
+    url: "#",
+  },
+  {
+    title: "Sonner",
+    url: "#",
+  },
+  {
+    title: "Switch",
+    url: "#",
+  },
+  {
+    title: "Tabs",
+    url: "#",
   },
 ];
 </script>
@@ -64,13 +160,13 @@ const items = [
             <SidebarMenuButton size="lg" as-child>
               <router-link to="/">
                 <div
-                  class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
+                  class="flex aspect-square size-8 items-center justify-center rounded-lg border text-sidebar-primary-foreground"
                 >
-                  <Book class="size-4" />
+                  <Android class="size-4" />
                 </div>
                 <div class="grid flex-1 text-left text-sm leading-tight">
                   <span class="truncate font-semibold">Documentation</span>
-                  <span class="truncate text-xs">Vue Components</span>
+                  <span class="truncate text-xs">Compose Components</span>
                 </div>
               </router-link>
             </SidebarMenuButton>
@@ -80,11 +176,14 @@ const items = [
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Documentation</SidebarGroupLabel>
+          <SidebarGroupLabel>Get Started</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem v-for="item in items" :key="item.title">
-                <SidebarMenuButton as-child>
+              <SidebarMenuItem v-for="item in guideMenus" :key="item.title">
+                <SidebarMenuButton
+                  as-child
+                  :class="cn(pathname === item.url && 'bg-sidebar-accent')"
+                >
                   <router-link :to="item.url">
                     <component :is="item.icon" />
                     <span>{{ item.title }}</span>
@@ -94,18 +193,25 @@ const items = [
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-      </SidebarContent>
 
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton>
-              <Users />
-              <span>Support</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
+        <SidebarGroup>
+          <SidebarGroupLabel>Components</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem v-for="item in componentMenus" :key="item.title">
+                <SidebarMenuButton
+                  as-child
+                  :class="cn(pathname === item.url && 'bg-sidebar-accent')"
+                >
+                  <router-link :to="item.url">
+                    {{ item.title }}
+                  </router-link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
     </Sidebar>
 
     <SidebarInset>

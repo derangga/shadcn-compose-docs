@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from "vue";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Copy } from "lucide-vue-next";
 

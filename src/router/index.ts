@@ -1,38 +1,53 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import type { RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
+import type { RouteRecordRaw } from "vue-router";
 
 const routes: RouteRecordRaw[] = [
   {
-    path: '/',
-    name: 'Home',
-    component: () => import('@/views/HomeView.vue')
+    path: "/",
+    name: "Home",
+    component: () => import("@/views/HomeView.vue"),
   },
   {
-    path: '/docs',
-    component: () => import('@/layouts/DocsLayout.vue'),
+    path: "/docs",
+    component: () => import("@/layouts/DocsLayout.vue"),
     children: [
       {
-        path: 'installation',
-        name: 'Installation',
-        component: () => import('@/views/docs/InstallationView.vue')
+        path: "introduction",
+        name: "Introduction",
+        component: () => import("@/views/docs/IntroductionView.vue"),
       },
       {
-        path: 'getting-started',
-        name: 'Getting Started',
-        component: () => import('@/views/docs/GettingStartedView.vue')
+        path: "installation",
+        name: "Installation",
+        component: () => import("@/views/docs/InstallationView.vue"),
       },
       {
-        path: 'components',
-        name: 'Components',
-        component: () => import('@/views/docs/ComponentsView.vue')
-      }
-    ]
-  }
-]
+        path: "theming",
+        name: "Theming",
+        component: () => import("@/views/docs/ThemingView.vue"),
+      },
+      {
+        path: "components",
+        name: "Components",
+        component: () => import("@/views/docs/ComponentsView.vue"),
+      },
+      {
+        path: "components/accordion",
+        name: "Accordion",
+        component: () => import("@/views/components/AccordionView.vue"),
+      },
+      {
+        path: "components/alert",
+        name: "Alert",
+        component: () => import("@/views/components/AlertView.vue"),
+      },
+    ],
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

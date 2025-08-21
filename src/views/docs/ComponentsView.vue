@@ -1,56 +1,126 @@
 <script setup lang="ts">
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+
+const menus = [
+  {
+    title: "Accordion",
+    url: "/docs/components/accordion",
+  },
+  {
+    title: "Alert",
+    url: "/docs/components/alert",
+  },
+  {
+    title: "Alert Dialog",
+    url: "#",
+  },
+  {
+    title: "Avatar",
+    url: "#",
+  },
+  {
+    title: "Badge",
+    url: "#",
+  },
+  {
+    title: "Bottom Sheet",
+    url: "#",
+  },
+  {
+    title: "Calendar",
+    url: "#",
+  },
+  {
+    title: "Card",
+    url: "#",
+  },
+  {
+    title: "Checkbox",
+    url: "#",
+  },
+  {
+    title: "Combobox",
+    url: "#",
+  },
+  {
+    title: "Date Picker",
+    url: "#",
+  },
+  {
+    title: "Dialog",
+    url: "#",
+  },
+  {
+    title: "Dropdown Menu",
+    url: "#",
+  },
+  {
+    title: "Input",
+    url: "#",
+  },
+  {
+    title: "Popover",
+    url: "#",
+  },
+  {
+    title: "Progress",
+    url: "#",
+  },
+  {
+    title: "Radio Group",
+    url: "#",
+  },
+  {
+    title: "Select",
+    url: "#",
+  },
+  {
+    title: "Skeleton",
+    url: "#",
+  },
+  {
+    title: "Select",
+    url: "#",
+  },
+  {
+    title: "Slider",
+    url: "#",
+  },
+  {
+    title: "Sonner",
+    url: "#",
+  },
+  {
+    title: "Switch",
+    url: "#",
+  },
+  {
+    title: "Tabs",
+    url: "#",
+  },
+];
 </script>
 
 <template>
-  <div class="max-w-4xl">
+  <div class="w-full">
     <div class="mb-8">
       <h1 class="text-4xl font-bold text-foreground mb-4">Components</h1>
       <p class="text-lg text-muted-foreground">
-        Explore our collection of reusable Vue components built with Tailwind
-        CSS.
+        Here you can find all the components available in the library. We are
+        working on adding more components.
       </p>
     </div>
 
     <Separator class="my-6" />
 
-    <div class="space-y-8">
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">Button</h2>
-        <p class="text-muted-foreground mb-4">
-          A versatile button component with multiple variants and sizes.
-        </p>
-        <div class="flex gap-4 mb-4">
-          <Button>Default</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="outline">Outline</Button>
-          <Button variant="ghost">Ghost</Button>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">Input</h2>
-        <p class="text-muted-foreground mb-4">
-          A clean and accessible input component for forms.
-        </p>
-        <div class="max-w-sm">
-          <Input placeholder="Enter some text..." />
-        </div>
-      </section>
-
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">Sidebar</h2>
-        <p class="text-muted-foreground mb-4">
-          A collapsible sidebar component perfect for navigation and layout
-          organization.
-        </p>
-        <p class="text-sm text-muted-foreground">
-          You're currently viewing this component in action! The sidebar on the
-          left demonstrates its functionality.
-        </p>
-      </section>
+    <div class="container px-4 md:px-6 space-y-8 grid grid-cols-3 mx-auto">
+      <router-link
+        v-for="menu in menus"
+        :to="menu.url"
+        class="font-semibold hover:underline"
+      >
+        {{ menu.title }}
+      </router-link>
     </div>
   </div>
 </template>
