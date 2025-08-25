@@ -144,6 +144,13 @@
   }
 }
 
+@layer components {
+  .prose :is(pre) {
+    --tw-prose-pre-bg: var(--color-muted);
+    --tw-prose-pre-code: var(--color-muted-foreground);
+  }
+}
+
 .steps-counter {
   counter-reset: step;
 }

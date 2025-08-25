@@ -34,12 +34,12 @@ const routes: RouteRecordRaw[] = [
       {
         path: "components/accordion",
         name: "Accordion",
-        component: () => import("@/views/components/AccordionView.vue"),
+        component: () => import("@/views/components/AccordionView.md"),
       },
       {
         path: "components/alert",
         name: "Alert",
-        component: () => import("@/views/components/AlertView.vue"),
+        component: () => import("@/views/components/AlertView.md"),
       },
       {
         path: "components/button",

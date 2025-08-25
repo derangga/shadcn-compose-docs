@@ -9,7 +9,7 @@ import Pages from "vite-plugin-pages";
 export default defineConfig({
   plugins: [
     vue({
-      include: [/\.vue$/, /\.md$/], // <-- Important: tell Vue to process .md files
+      include: [/\.vue$/, /\.md$/],
     }),
     tailwindcss(),
     Markdown({
@@ -18,9 +18,7 @@ export default defineConfig({
         linkify: true,
         typographer: true,
       },
-      // Enable frontmatter
       frontmatter: true,
-      // Custom component wrapping
       wrapperClasses: "prose prose-sm max-w-none",
     }),
     Pages({

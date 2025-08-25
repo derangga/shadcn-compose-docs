@@ -5,10 +5,12 @@ import App from "./App.vue";
 import TabPreview from "./components/TabPreview.vue";
 import Steps from "./components/Steps.vue";
 import ComponentPreview from "./components/ComponentPreview.vue";
+import HeaderDocs from "./components/HeaderDocs.vue";
 
 const app = createApp(App);
 app.component("TabPreview", TabPreview);
 app.component("Steps", Steps);
 app.component("ComponentPreview", ComponentPreview);
+app.component("HeaderDocs", HeaderDocs);
 app.use(router);
 app.mount("#app");

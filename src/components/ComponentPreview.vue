@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useClipboard } from "@vueuse/core";
 import { ref } from "vue";
 import { cn } from "@/lib/utils";
 import {
@@ -8,6 +7,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs/index";
+import KotlinCodeBlock from "./KotlinCodeBlock.vue";
 
 defineOptions({
   inheritAttrs: false,
@@ -21,9 +21,7 @@ withDefaults(
   { align: "center" }
 );
 
-const codeHtml = ref("");
-
-const { copy, copied } = useClipboard();
+const codeHtml = ref(`fun greet(name: String) = println(\"Hello, $name!\")`);
 </script>
 
 <template>
@@ -63,16 +61,7 @@ const { copy, copied } = useClipboard();
         ></div>
       </TabsContent>
       <TabsContent value="code" class="vp-doc">
-        <div v-if="codeHtml" class="language-vue" style="flex: 1">
-          <button
-            title="Copy Code"
-            class="copy"
-            :class="{ copied }"
-            @click="copy('')"
-          />
-
-          <div v-html="codeHtml" />
-        </div>
+        <KotlinCodeBlock v-if="codeHtml" :code="codeHtml" />
         <slot v-else />
       </TabsContent>
     </Tabs>

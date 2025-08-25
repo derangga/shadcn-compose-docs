@@ -1,50 +1,26 @@
 ---
-title: Label
-description: Renders an accessible label associated with controls.
-source: apps/www/src/registry/default/ui/label
-primitive: https://www.reka-ui.com/docs/components/label.html
+title: Button
+description: Displays a button or a component that looks like a button.
 ---
 
-<ComponentPreview name="LabelDemo" />
+<HeaderDocs :title="frontmatter.title" :description="frontmatter.description"/>
 
-## Installation
-
-<TabPreview name="CLI">
-<template #CLI>
-
-```bash
-npx shadcn-vue@latest add label
-```
-
-</template>
-
-<template #Manual>
-
-<Steps>
-
-### Install the following dependency:
-
-```bash
-npm install reka-ui
-```
-
-### Copy and paste the following code into your project:
-
-<<< @/registry/default/ui/label/Label.vue
-
-</Steps>
-
-</template>
-</TabPreview>
+<ComponentPreview name="ButtonDemo"  />
 
 ## Usage
 
 ```vue
 <script setup lang="ts">
-import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 </script>
 
 <template>
-  <Label for="email">Your email address</Label>
+  <Button>Button</Button>
 </template>
 ```
+
+## Examples
+
+### Primary
+
+<ComponentPreview name="ButtonDemo"  />

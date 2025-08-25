@@ -106,7 +106,7 @@ const menus = [
 </script>
 
 <template>
-  <div class="w-full">
+  <div>
     <div class="mb-8">
       <h1 class="text-4xl font-bold text-foreground mb-4">Components</h1>
       <p class="text-lg text-muted-foreground">
