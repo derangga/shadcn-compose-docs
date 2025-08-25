@@ -1,6 +1,14 @@
-import { createApp } from 'vue'
-import router from './router'
-import './style.css'
-import App from './App.vue'
+import { createApp } from "vue";
+import router from "./router";
+import "./style.css";
+import App from "./App.vue";
+import TabPreview from "./components/TabPreview.vue";
+import Steps from "./components/Steps.vue";
+import ComponentPreview from "./components/ComponentPreview.vue";
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App);
+app.component("TabPreview", TabPreview);
+app.component("Steps", Steps);
+app.component("ComponentPreview", ComponentPreview);
+app.use(router);
+app.mount("#app");

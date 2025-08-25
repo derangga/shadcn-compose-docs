@@ -73,6 +73,10 @@ const componentMenus = [
     url: "#",
   },
   {
+    title: "Button",
+    url: "/docs/components/button",
+  },
+  {
     title: "Bottom Sheet",
     url: "#",
   },
@@ -235,7 +239,7 @@ const componentMenus = [
         </div>
       </header>
 
-      <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
+      <div class="prose dark:prose-invert flex flex-1 flex-col gap-4 p-4 pt-0">
         <router-view />
       </div>
     </SidebarInset>

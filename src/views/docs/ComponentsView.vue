@@ -23,6 +23,10 @@ const menus = [
     url: "#",
   },
   {
+    title: "Button",
+    url: "/docs/components/button",
+  },
+  {
     title: "Bottom Sheet",
     url: "#",
   },

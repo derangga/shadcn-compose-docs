@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -132,4 +133,26 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer utilities {
+  .\[counter-reset\:step\] {
+    counter-reset: step;
+  }
+  .\[counter-increment\:step\] {
+    counter-increment: step;
+  }
+}
+
+.steps-counter {
+  counter-reset: step;
+}
+.steps-counter h3 {
+  counter-increment: step;
+  display: flex;
+  align-items: center;
+}
+.steps-counter h3::before {
+  content: counter(step);
+  /* Add your styling here */
 }

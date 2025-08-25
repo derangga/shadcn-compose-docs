@@ -41,6 +41,11 @@ const routes: RouteRecordRaw[] = [
         name: "Alert",
         component: () => import("@/views/components/AlertView.vue"),
       },
+      {
+        path: "components/button",
+        name: "Button",
+        component: () => import("@/views/components/ButtonView.md"),
+      },
     ],
   },
 ];
