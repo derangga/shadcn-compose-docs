@@ -4,6 +4,7 @@ import vue from "@vitejs/plugin-vue";
 import tailwindcss from "@tailwindcss/vite";
 import Markdown from "unplugin-vue-markdown/vite";
 import Pages from "vite-plugin-pages";
+import Prism from "markdown-it-prism";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -18,8 +19,15 @@ export default defineConfig({
         linkify: true,
         typographer: true,
       },
+      markdownItUses: [
+        [
+          Prism,
+          {
+            defaultLanguage: "markup",
+          },
+        ],
+      ],
       frontmatter: true,
-      wrapperClasses: "prose prose-sm max-w-none",
     }),
     Pages({
       extensions: ["vue", "md"],

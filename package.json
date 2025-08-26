@@ -14,6 +14,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-vue-next": "^0.539.0",
+    "markdown-it-prism": "^3.0.0",
+    "prismjs": "^1.30.0",
     "reka-ui": "^2.4.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
@@ -24,6 +26,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^24.2.1",
+    "@types/prismjs": "^1.26.5",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.7.0",
     "typescript": "~5.8.3",

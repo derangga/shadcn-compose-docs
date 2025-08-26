@@ -121,7 +121,7 @@ const menus = [
       <router-link
         v-for="menu in menus"
         :to="menu.url"
-        class="font-semibold hover:underline"
+        class="font-semibold hover:underline text-foreground"
       >
         {{ menu.title }}
       </router-link>

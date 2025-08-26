@@ -22,6 +22,7 @@ withDefaults(
 );
 
 const codeHtml = ref(`fun greet(name: String) = println(\"Hello, $name!\")`);
+const tabs = ["Preview", "Code"];
 </script>
 
 <template>
@@ -31,18 +32,16 @@ const codeHtml = ref(`fun greet(name: String) = println(\"Hello, $name!\")`);
         <TabsList
           class="w-full justify-start rounded-none border-b bg-transparent p-0"
         >
-          <TabsTrigger
-            value="preview"
-            class="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
-          >
-            Preview
-          </TabsTrigger>
-          <TabsTrigger
-            value="code"
-            class="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
-          >
-            Code
-          </TabsTrigger>
+          <div class="w-fit">
+            <TabsTrigger
+              v-for="(tab, index) in tabs"
+              :key="index"
+              :value="tab.toLocaleLowerCase()"
+              class="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+            >
+              {{ tab }}
+            </TabsTrigger>
+          </div>
         </TabsList>
       </div>
       <TabsContent value="preview" class="relative rounded-md border">
@@ -61,7 +60,7 @@ const codeHtml = ref(`fun greet(name: String) = println(\"Hello, $name!\")`);
         ></div>
       </TabsContent>
       <TabsContent value="code" class="vp-doc">
-        <KotlinCodeBlock v-if="codeHtml" :code="codeHtml" />
+        <KotlinCodeBlock v-if="codeHtml" :code="codeHtml" language="kotlin" />
         <slot v-else />
       </TabsContent>
     </Tabs>

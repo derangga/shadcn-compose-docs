@@ -7,6 +7,8 @@ import Steps from "./components/Steps.vue";
 import ComponentPreview from "./components/ComponentPreview.vue";
 import HeaderDocs from "./components/HeaderDocs.vue";
 
+import "prismjs/themes/prism.css";
+
 const app = createApp(App);
 app.component("TabPreview", TabPreview);
 app.component("Steps", Steps);

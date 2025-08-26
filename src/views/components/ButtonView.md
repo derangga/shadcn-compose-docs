@@ -9,6 +9,10 @@ description: Displays a button or a component that looks like a button.
 
 ## Usage
 
+```kotlin
+fun greet(name: String) = println("Hello, $name!")
+```
+
 ```vue
 <script setup lang="ts">
 import { Button } from "@/components/ui/button";
