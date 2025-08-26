@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { Check, Copy } from "lucide-vue-next";
 import Prism from "prismjs";
 import "prismjs/components/prism-kotlin";
+import { useClipboard } from "@vueuse/core";
+import { Button } from "./ui/button";
 
 interface Props {
   code: string;
@@ -10,7 +12,7 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-const copied = ref(false);
+const { copy, copied } = useClipboard({ source: props.code });
 
 const highlightedCode = computed(() => {
   if (Prism.languages[props.language]) {
@@ -22,41 +24,23 @@ const highlightedCode = computed(() => {
   }
   return props.code;
 });
-
-const copyCode = async () => {
-  try {
-    await navigator.clipboard.writeText(props.code);
-    copied.value = true;
-    setTimeout(() => {
-      copied.value = false;
-    }, 2000);
-  } catch (err) {
-    console.error("Failed to copy code:", err);
-  }
-};
 </script>
 
 <template>
   <div
     class="code-block-wrapper border border-primary relative my-6 bg-primary rounded-sm"
   >
-    <!-- Header with copy button -->
     <div class="flex items-center justify-between px-4 py-2">
       <span class="text-sm font-medium text-muted capitalize">{{
         language
       }}</span>
-      <button
-        @click="copyCode"
-        class="flex items-center gap-2 px-3 py-1 text-sm text-muted hover:cursor-pointer rounded transition-colors"
-        :class="{ 'text-green-400': copied }"
-      >
+      <Button @click="copy()" :class="{ 'text-green-400': copied }">
         <Check v-if="copied" class="w-4 h-4" />
         <Copy v-else class="w-4 h-4" />
         {{ copied ? "Copied!" : "Copy" }}
-      </button>
+      </Button>
     </div>
 
-    <!-- Code content with Prism highlighting -->
     <div class="prism-wrapper overflow-x-auto">
       <pre
         :class="`language-${language}`"
@@ -78,7 +62,7 @@ const copyCode = async () => {
   @apply m-0;
 }
 
-/* Override Prism styles to match your theme if needed */
+/* Override Prism styles to match your theme */
 
 /* :deep(.token.comment),
 :deep(.token.prolog),
@@ -110,14 +94,6 @@ const copyCode = async () => {
   @apply text-green-500;
 } */
 
-:deep(.token.operator),
-:deep(.token.entity),
-:deep(.token.url),
-:deep(.language-css .token.string),
-:deep(.style .token.string) {
-  /* @apply text-yellow-500; */
-  background: none;
-}
 /* 
 :deep(.token.atrule),
 :deep(.token.attr-value),
@@ -135,4 +111,12 @@ const copyCode = async () => {
 :deep(.token.variable) {
   @apply text-orange-500;
 } */
+
+:deep(.token.operator),
+:deep(.token.entity),
+:deep(.token.url),
+:deep(.language-css .token.string),
+:deep(.style .token.string) {
+  background: none;
+}
 </style>
