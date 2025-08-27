@@ -25,13 +25,24 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { useRoute } from "vue-router";
-import { computed } from "vue";
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 import { cn } from "@/lib/utils";
 import componentMenus from "@/views/component_menus";
 
 const route = useRoute();
 
 const pathname = computed(() => route.path);
+
+const headings = ref<{ id: string; text: string; level: number }[]>([]);
+const activeHeading = ref("");
+
+watch(
+  () => route.fullPath,
+  async () => {
+    await nextTick();
+    generateHeadings();
+  }
+);
 
 // Menu items for the sidebar
 const guideMenus = [
@@ -51,6 +62,53 @@ const guideMenus = [
     icon: Palette,
   },
 ];
+
+let scrollContainer: HTMLElement | null = null;
+
+function generateHeadings() {
+  const content = document.querySelector(".prose");
+  if (!content) return;
+
+  headings.value = Array.from(content.querySelectorAll("h2, h3")).map((el) => {
+    const id =
+      el.id || el.textContent?.toLowerCase().replace(/\s+/g, "-") || "";
+    el.id = id;
+    return {
+      id,
+      text: el.textContent || "",
+      level: el.tagName === "H2" ? 2 : 3,
+    };
+  });
+}
+
+function handleScroll() {
+  if (!scrollContainer) return;
+  const scrollY = scrollContainer.scrollTop;
+  let current = "";
+  for (const h of headings.value) {
+    const el = document.getElementById(h.id);
+    if (el && el.offsetTop - 100 <= scrollY) {
+      current = h.id;
+    }
+  }
+  activeHeading.value = current;
+}
+
+onMounted(async () => {
+  await nextTick();
+  generateHeadings();
+
+  scrollContainer = document.querySelector(".overflow-y-auto");
+  if (scrollContainer) {
+    scrollContainer.addEventListener("scroll", handleScroll);
+  }
+});
+
+onUnmounted(() => {
+  if (scrollContainer) {
+    scrollContainer.removeEventListener("scroll", handleScroll);
+  }
+});
 </script>
 
 <template>
@@ -137,9 +195,44 @@ const guideMenus = [
         </div>
       </header>
 
-      <div class="prose dark:prose-invert flex flex-1 flex-col gap-4 p-4 pt-0">
-        <router-view />
+      <div
+        class="px-16 relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px] h-screen"
+      >
+        <div class="overflow-y-auto scrollbar-hide scroll-smooth">
+          <router-view class="prose dark:prose-invert" />
+        </div>
+        <aside
+          v-if="pathname !== '/docs/components'"
+          class="w-64 pl-4 hidden lg:block"
+        >
+          <h2 class="text-sm font-medium">On This Page</h2>
+          <ul class="mt-2 space-y-1 text-sm">
+            <li v-for="h in headings" :key="h.id">
+              <a
+                :href="`#${h.id}`"
+                :class="[
+                  activeHeading === h.id
+                    ? 'text-primary font-semibold'
+                    : 'text-muted-foreground',
+                  h.level === 3 ? 'ml-4' : '',
+                ]"
+              >
+                {{ h.text }}
+              </a>
+            </li>
+          </ul>
+        </aside>
       </div>
     </SidebarInset>
   </SidebarProvider>
 </template>
+
+<style lang="css" scoped>
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+</style>
