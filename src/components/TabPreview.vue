@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 
-const props = withDefaults(
-  defineProps<{
-    name: string;
-    names?: string[];
-    align?: "center" | "start" | "end";
-    sfcTsCode?: string;
-    sfcTsHtml?: string;
-  }>(),
-  {
-    align: "center",
-    names: () => ["CLI", "Manual"],
-  }
-);
+interface Props {
+  name: string;
+  names?: string[];
+  align?: "center" | "start" | "end";
+  sfcTsCode?: string;
+  sfcTsHtml?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  align: "center",
+  names: () => ["CLI", "Manual"],
+});
 </script>
 
 <template>

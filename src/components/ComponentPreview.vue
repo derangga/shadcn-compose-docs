@@ -9,19 +9,20 @@ import {
 } from "@/components/ui/tabs/index";
 import KotlinCodeBlock from "./KotlinCodeBlock.vue";
 import { content, type Variant } from "@/views/components/content";
+interface Props {
+  name: string;
+  variant?: string;
+  align?: "center" | "start" | "end";
+}
 
 defineOptions({
   inheritAttrs: false,
 });
 
-const props = withDefaults(
-  defineProps<{
-    name: string;
-    variant?: string;
-    align?: "center" | "start" | "end";
-  }>(),
-  { align: "center", variant: "default" }
-);
+const props = withDefaults(defineProps<Props>(), {
+  align: "center",
+  variant: "default",
+});
 
 const componentDcos = ref<Variant[]>();
 

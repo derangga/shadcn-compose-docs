@@ -24,91 +24,42 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
+import TableOfContents from "@/components/TableOfContents.vue";
 import { useRoute } from "vue-router";
-import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
+import { computed } from "vue";
 import { cn } from "@/lib/utils";
 import componentMenus from "@/views/component_menus";
 
 const route = useRoute();
-
 const pathname = computed(() => route.path);
 
-const headings = ref<{ id: string; text: string; level: number }[]>([]);
-const activeHeading = ref("");
+// Navigation menu items
+const navigationConfig = {
+  guides: [
+    {
+      title: "Introduction",
+      url: "/docs/introduction",
+      icon: Info,
+    },
+    {
+      title: "Installation",
+      url: "/docs/installation",
+      icon: Package,
+    },
+    {
+      title: "Theming",
+      url: "/docs/theming",
+      icon: Palette,
+    },
+  ],
+  components: componentMenus,
+};
 
-watch(
-  () => route.fullPath,
-  async () => {
-    await nextTick();
-    generateHeadings();
-  }
-);
+const hideTocPaths = ["/docs/components"];
 
-// Menu items for the sidebar
-const guideMenus = [
-  {
-    title: "Introduction",
-    url: "/docs/introduction",
-    icon: Info,
-  },
-  {
-    title: "Installation",
-    url: "/docs/installation",
-    icon: Package,
-  },
-  {
-    title: "Theming",
-    url: "/docs/theming",
-    icon: Palette,
-  },
-];
-
-let scrollContainer: HTMLElement | null = null;
-
-function generateHeadings() {
-  const content = document.querySelector(".prose");
-  if (!content) return;
-
-  headings.value = Array.from(content.querySelectorAll("h2, h3")).map((el) => {
-    const id =
-      el.id || el.textContent?.toLowerCase().replace(/\s+/g, "-") || "";
-    el.id = id;
-    return {
-      id,
-      text: el.textContent || "",
-      level: el.tagName === "H2" ? 2 : 3,
-    };
-  });
-}
-
-function handleScroll() {
-  if (!scrollContainer) return;
-  const scrollY = scrollContainer.scrollTop;
-  let current = "";
-  for (const h of headings.value) {
-    const el = document.getElementById(h.id);
-    if (el && el.offsetTop - 100 <= scrollY) {
-      current = h.id;
-    }
-  }
-  activeHeading.value = current;
-}
-
-onMounted(async () => {
-  await nextTick();
-  generateHeadings();
-
-  scrollContainer = document.querySelector(".overflow-y-auto");
-  if (scrollContainer) {
-    scrollContainer.addEventListener("scroll", handleScroll);
-  }
-});
-
-onUnmounted(() => {
-  if (scrollContainer) {
-    scrollContainer.removeEventListener("scroll", handleScroll);
-  }
-});
+const isMenuItemActive = (itemUrl: string) => {
+  return pathname.value === itemUrl;
+};
 </script>
 
 <template>
@@ -135,14 +86,18 @@ onUnmounted(() => {
       </SidebarHeader>
 
       <SidebarContent>
+        <!-- Getting Started Section -->
         <SidebarGroup>
           <SidebarGroupLabel>Get Started</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem v-for="item in guideMenus" :key="item.title">
+              <SidebarMenuItem
+                v-for="item in navigationConfig.guides"
+                :key="item.title"
+              >
                 <SidebarMenuButton
                   as-child
-                  :class="cn(pathname === item.url && 'bg-sidebar-accent')"
+                  :class="cn(isMenuItemActive(item.url) && 'bg-sidebar-accent')"
                 >
                   <router-link :to="item.url">
                     <component :is="item.icon" />
@@ -154,14 +109,18 @@ onUnmounted(() => {
           </SidebarGroupContent>
         </SidebarGroup>
 
+        <!-- Components Section -->
         <SidebarGroup>
           <SidebarGroupLabel>Components</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem v-for="item in componentMenus" :key="item.title">
+              <SidebarMenuItem
+                v-for="item in navigationConfig.components"
+                :key="item.title"
+              >
                 <SidebarMenuButton
                   as-child
-                  :class="cn(pathname === item.url && 'bg-sidebar-accent')"
+                  :class="cn(isMenuItemActive(item.url) && 'bg-sidebar-accent')"
                 >
                   <router-link :to="item.url">
                     {{ item.title }}
@@ -184,7 +143,7 @@ onUnmounted(() => {
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem class="hidden md:block">
-                <BreadcrumbLink href="/"> Home </BreadcrumbLink>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator class="hidden md:block" />
               <BreadcrumbItem>
@@ -199,29 +158,20 @@ onUnmounted(() => {
         class="px-16 relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px] h-screen"
       >
         <div class="overflow-y-auto scrollbar-hide scroll-smooth">
-          <router-view class="prose dark:prose-invert" />
+          <router-view class="prose dark:prose-invert max-w-none" />
         </div>
-        <aside
-          v-if="pathname !== '/docs/components'"
-          class="w-64 pl-4 hidden lg:block"
-        >
-          <h2 class="text-sm font-medium">On This Page</h2>
-          <ul class="mt-2 space-y-1 text-sm">
-            <li v-for="h in headings" :key="h.id">
-              <a
-                :href="`#${h.id}`"
-                :class="[
-                  activeHeading === h.id
-                    ? 'text-primary font-semibold'
-                    : 'text-muted-foreground',
-                  h.level === 3 ? 'ml-4' : '',
-                ]"
-              >
-                {{ h.text }}
-              </a>
-            </li>
-          </ul>
-        </aside>
+
+        <TableOfContents
+          title="On This Page"
+          :hide-on-paths="hideTocPaths"
+          :max-level="3"
+          :min-level="2"
+          content-selector=".prose"
+          heading-selector="h2, h3"
+          scroll-container-selector=".overflow-y-auto"
+          :offset-top="100"
+          container-class="w-64 pl-4"
+        />
       </div>
     </SidebarInset>
   </SidebarProvider>
@@ -232,7 +182,18 @@ onUnmounted(() => {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
+}
+
+/* Ensure headings have proper scroll margin */
+:deep(.prose h1),
+:deep(.prose h2),
+:deep(.prose h3),
+:deep(.prose h4),
+:deep(.prose h5),
+:deep(.prose h6) {
+  scroll-margin-top: 100px;
 }
 </style>
