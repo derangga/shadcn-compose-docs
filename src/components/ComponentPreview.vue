@@ -8,7 +8,7 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs/index";
 import KotlinCodeBlock from "./KotlinCodeBlock.vue";
-import { content, type Variant } from "@/views/components/button/content";
+import { content, type Variant } from "@/views/components/content";
 
 defineOptions({
   inheritAttrs: false,

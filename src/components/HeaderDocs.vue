@@ -12,7 +12,7 @@ defineProps<{
   >
     {{ title }}
   </h1>
-  <p class="text-muted-foreground text-[1.05rem] text-balance sm:text-base">
+  <p class="text-muted-foreground text-[1.05rem] sm:text-base">
     {{ description }}
   </p>
   <Separator />

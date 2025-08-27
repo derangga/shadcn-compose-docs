@@ -27,6 +27,7 @@ import { Separator } from "@/components/ui/separator";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
 import { cn } from "@/lib/utils";
+import componentMenus from "@/views/component_menus";
 
 const route = useRoute();
 
@@ -48,109 +49,6 @@ const guideMenus = [
     title: "Theming",
     url: "/docs/theming",
     icon: Palette,
-  },
-];
-
-const componentMenus = [
-  {
-    title: "Accordion",
-    url: "/docs/components/accordion",
-  },
-  {
-    title: "Alert",
-    url: "/docs/components/alert",
-  },
-  {
-    title: "Alert Dialog",
-    url: "#",
-  },
-  {
-    title: "Avatar",
-    url: "#",
-  },
-  {
-    title: "Badge",
-    url: "#",
-  },
-  {
-    title: "Button",
-    url: "/docs/components/button",
-  },
-  {
-    title: "Bottom Sheet",
-    url: "#",
-  },
-  {
-    title: "Calendar",
-    url: "#",
-  },
-  {
-    title: "Card",
-    url: "#",
-  },
-  {
-    title: "Checkbox",
-    url: "#",
-  },
-  {
-    title: "Combobox",
-    url: "#",
-  },
-  {
-    title: "Date Picker",
-    url: "#",
-  },
-  {
-    title: "Dialog",
-    url: "#",
-  },
-  {
-    title: "Dropdown Menu",
-    url: "#",
-  },
-  {
-    title: "Input",
-    url: "#",
-  },
-  {
-    title: "Popover",
-    url: "#",
-  },
-  {
-    title: "Progress",
-    url: "#",
-  },
-  {
-    title: "Radio Group",
-    url: "#",
-  },
-  {
-    title: "Select",
-    url: "#",
-  },
-  {
-    title: "Skeleton",
-    url: "#",
-  },
-  {
-    title: "Select",
-    url: "#",
-  },
-  {
-    title: "Slider",
-    url: "#",
-  },
-  {
-    title: "Sonner",
-    url: "#",
-  },
-  {
-    title: "Switch",
-    url: "#",
-  },
-  {
-    title: "Tabs",
-    url: "#",
   },
 ];
 </script>
