@@ -44,7 +44,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: "components/button",
         name: "Button",
-        component: () => import("@/views/components/ButtonView.md"),
+        component: () => import("@/views/components/button/ButtonView.md"),
       },
     ],
   },

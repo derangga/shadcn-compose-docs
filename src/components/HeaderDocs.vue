@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Separator } from "./ui/separator";
+
 defineProps<{
   title: string;
   description: string;
@@ -13,4 +15,5 @@ defineProps<{
   <p class="text-muted-foreground text-[1.05rem] text-balance sm:text-base">
     {{ description }}
   </p>
+  <Separator />
 </template>

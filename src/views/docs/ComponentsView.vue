@@ -117,11 +117,13 @@ const menus = [
 
     <Separator class="my-6" />
 
-    <div class="container px-4 md:px-6 space-y-8 grid grid-cols-3 mx-auto">
+    <div
+      class="not-prose container px-4 md:px-6 space-y-8 grid grid-cols-3 mx-auto"
+    >
       <router-link
         v-for="menu in menus"
         :to="menu.url"
-        class="font-semibold hover:underline text-foreground"
+        class="text-lg font-medium underline-offset-4 hover:underline md:text-base"
       >
         {{ menu.title }}
       </router-link>
