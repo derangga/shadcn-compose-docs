@@ -153,9 +153,11 @@ const isMenuItemActive = (itemUrl: string) => {
       </header>
 
       <div
-        class="px-16 relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]"
+        class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]"
       >
-        <div class="overflow-y-auto scrollbar-hide scroll-smooth h-screen">
+        <div
+          class="overflow-y-auto scrollbar-hide scroll-smooth h-screen pl-16"
+        >
           <router-view class="prose dark:prose-invert max-w-none" />
         </div>
 
@@ -167,8 +169,10 @@ const isMenuItemActive = (itemUrl: string) => {
           content-selector=".prose"
           heading-selector="h2, h3"
           scroll-container-selector=".overflow-y-auto"
+          :multiple-active="true"
           :offset-top="100"
           container-class="w-64 pl-4"
+          class="pr-16"
         />
       </div>
     </SidebarInset>

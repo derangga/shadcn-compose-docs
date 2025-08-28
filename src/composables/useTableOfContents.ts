@@ -15,6 +15,7 @@ interface UseTableOfContentsOptions {
   scrollContainerSelector?: string;
   offsetTop?: number;
   autoGenerate?: boolean;
+  visibilityBuffer?: number;
 }
 
 export function useTableOfContents(options: UseTableOfContentsOptions = {}) {
@@ -24,11 +25,13 @@ export function useTableOfContents(options: UseTableOfContentsOptions = {}) {
     scrollContainerSelector = ".overflow-y-auto",
     offsetTop = 100,
     autoGenerate = true,
+    visibilityBuffer = 0,
   } = options;
 
   const route = useRoute();
   const headings = ref<Heading[]>([]);
   const activeHeading = ref<string>("");
+  const visibleHeadings = ref<string[]>([]);
 
   let scrollContainer: HTMLElement | null = null;
 
@@ -90,26 +93,58 @@ export function useTableOfContents(options: UseTableOfContentsOptions = {}) {
     };
   };
 
-  // Update active heading based on scroll position
   const updateActiveHeading = (): void => {
     if (!scrollContainer || headings.value.length === 0) return;
 
     const scrollTop = scrollContainer.scrollTop;
-    let currentHeading = "";
+    const containerHeight = scrollContainer.clientHeight;
+    const viewportTop = scrollTop - visibilityBuffer;
+    const viewportBottom = scrollTop + containerHeight + visibilityBuffer;
 
-    // Find the heading currently in view
+    const currentVisibleHeadings: string[] = [];
+    let primaryActiveHeading = "";
+
+    // Check each heading's visibility
     for (const heading of headings.value) {
-      if (heading.element.offsetTop - offsetTop <= scrollTop) {
-        currentHeading = heading.id;
+      const element = heading.element;
+      const elementTop = element.offsetTop;
+      const elementHeight = Math.max(element.offsetHeight || 32, 32);
+      const elementBottom = elementTop + elementHeight;
+
+      const isActuallyVisible =
+        elementBottom > viewportTop && elementTop < viewportBottom;
+
+      if (isActuallyVisible) {
+        currentVisibleHeadings.push(heading.id);
       }
     }
 
-    // If no heading found and at top of page, use first heading
-    if (!currentHeading && scrollTop < offsetTop && headings.value.length > 0) {
-      currentHeading = headings.value[0].id;
+    // Determine primary active from visible headings
+    if (currentVisibleHeadings.length > 0) {
+      primaryActiveHeading = currentVisibleHeadings[0];
+    } else {
+      for (let i = headings.value.length - 1; i >= 0; i--) {
+        const heading = headings.value[i];
+        const elementTop = heading.element.offsetTop;
+
+        if (elementTop <= scrollTop + offsetTop) {
+          primaryActiveHeading = heading.id;
+          break;
+        }
+      }
     }
 
-    activeHeading.value = currentHeading;
+    // Handle edge case: very top of document
+    if (scrollTop <= offsetTop && headings.value.length > 0) {
+      const firstHeading = headings.value[0];
+      if (!currentVisibleHeadings.includes(firstHeading.id)) {
+        currentVisibleHeadings.unshift(firstHeading.id);
+      }
+      primaryActiveHeading = firstHeading.id;
+    }
+
+    visibleHeadings.value = currentVisibleHeadings;
+    activeHeading.value = primaryActiveHeading;
   };
 
   const scrollToHeading = (headingId: string, event?: Event): void => {
@@ -134,13 +169,11 @@ export function useTableOfContents(options: UseTableOfContentsOptions = {}) {
     }
   };
 
-  // Throttled scroll handler
   const throttledUpdateActiveHeading = createThrottled(
     updateActiveHeading,
     100
   );
 
-  // Initialize scroll container and event listeners
   const initializeScrollListeners = (): void => {
     scrollContainer = document.querySelector(scrollContainerSelector);
 
@@ -196,6 +229,7 @@ export function useTableOfContents(options: UseTableOfContentsOptions = {}) {
   return {
     headings,
     activeHeading,
+    visibleHeadings,
     extractHeadings,
     updateActiveHeading,
     scrollToHeading,
