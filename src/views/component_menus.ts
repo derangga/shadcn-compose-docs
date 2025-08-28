@@ -33,15 +33,19 @@ const componentMenus = [
   },
   {
     title: "Card",
-    url: "#",
+    url: "/docs/components/card",
+  },
+  {
+    title: "Carousel",
+    url: "/docs/components/carousel",
   },
   {
     title: "Checkbox",
-    url: "#",
+    url: "/docs/components/checkbox",
   },
   {
     title: "Combobox",
-    url: "#",
+    url: "/docs/components/combobox",
   },
   {
     title: "Date Picker",

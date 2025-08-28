@@ -159,12 +159,7 @@
 
 /* style configuration for inline code */
 code:not([class*="language-"]) {
-  background-color: #f1f5f9;
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.875em;
-  color: #e11d48;
+  @apply bg-slate-100 px-1 py-0.5 rounded font-mono text-sm text-rose-600;
 }
 
 code:not([class*="language-"])::before,

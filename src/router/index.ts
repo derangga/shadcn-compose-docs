@@ -14,7 +14,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: "introduction",
         name: "Introduction",
-        component: () => import("@/views/docs/IntroductionView.vue"),
+        component: () => import("@/views/docs/Introduction.md"),
       },
       {
         path: "installation",
@@ -24,7 +24,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: "theming",
         name: "Theming",
-        component: () => import("@/views/docs/ThemingView.vue"),
+        component: () => import("@/views/docs/Theming.md"),
       },
       {
         path: "components",
@@ -67,9 +67,29 @@ const routes: RouteRecordRaw[] = [
         component: () => import("@/views/components/Button.md"),
       },
       {
-        path: "components/Calendar",
+        path: "components/calendar",
         name: "Calendar",
         component: () => import("@/views/components/Calendar.md"),
+      },
+      {
+        path: "components/card",
+        name: "Card",
+        component: () => import("@/views/components/Card.md"),
+      },
+      {
+        path: "components/carousel",
+        name: "Carousel",
+        component: () => import("@/views/components/Carousel.md"),
+      },
+      {
+        path: "components/checkbox",
+        name: "Checkbox",
+        component: () => import("@/views/components/Checkbox.md"),
+      },
+      {
+        path: "components/combobox",
+        name: "Combobox",
+        component: () => import("@/views/components/Combobox.md"),
       },
     ],
   },
