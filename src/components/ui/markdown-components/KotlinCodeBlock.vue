@@ -2,9 +2,10 @@
 import { computed } from "vue";
 import { Check, Copy } from "lucide-vue-next";
 import Prism from "prismjs";
-import "prismjs/components/prism-kotlin";
 import { useClipboard } from "@vueuse/core";
-import { Button } from "./ui/button";
+import { Button } from "../button";
+
+import "prismjs/components/prism-kotlin";
 
 interface Props {
   code: string;
@@ -50,7 +51,7 @@ const highlightedCode = computed(() => {
 </template>
 
 <style scoped>
-@reference "../style.css";
+@reference "../../../style.css";
 
 .code-block-wrapper {
   margin: 1.5rem 0;

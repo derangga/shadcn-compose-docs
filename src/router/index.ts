@@ -19,7 +19,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: "installation",
         name: "Installation",
-        component: () => import("@/views/docs/InstallationView.vue"),
+        component: () => import("@/views/docs/Installation.md"),
       },
       {
         path: "theming",

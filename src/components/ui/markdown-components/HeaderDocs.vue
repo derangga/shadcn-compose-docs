@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Separator } from "./ui/separator";
+import { Separator } from "../separator";
 
 defineProps<{
   title: string;

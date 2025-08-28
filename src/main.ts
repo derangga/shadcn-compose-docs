@@ -2,12 +2,12 @@ import { createApp } from "vue";
 import router from "./router";
 import "./style.css";
 import App from "./App.vue";
-import TabPreview from "./components/TabPreview.vue";
-import Steps from "./components/Steps.vue";
-import ComponentPreview from "./components/ComponentPreview.vue";
-import HeaderDocs from "./components/HeaderDocs.vue";
 
 import "prismjs/themes/prism.css";
+import TabPreview from "./components/ui/markdown-components/TabPreview.vue";
+import Steps from "./components/ui/markdown-components/Steps.vue";
+import ComponentPreview from "./components/ui/markdown-components/ComponentPreview.vue";
+import HeaderDocs from "./components/ui/markdown-components/HeaderDocs.vue";
 
 const app = createApp(App);
 app.component("TabPreview", TabPreview);

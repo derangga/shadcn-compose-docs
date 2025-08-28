@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "prismjs/themes/prism-tomorrow.css";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -147,12 +148,26 @@
 .steps-counter {
   counter-reset: step;
 }
-.steps-counter h3 {
+.steps-counter h4 {
   counter-increment: step;
   display: flex;
   align-items: center;
 }
-.steps-counter h3::before {
+.steps-counter h4::before {
   content: counter(step);
-  /* Add your styling here */
+}
+
+/* style configuration for inline code */
+code:not([class*="language-"]) {
+  background-color: #f1f5f9;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.875em;
+  color: #e11d48;
+}
+
+code:not([class*="language-"])::before,
+code:not([class*="language-"])::after {
+  display: none;
 }
