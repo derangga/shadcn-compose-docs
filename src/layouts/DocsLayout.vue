@@ -65,7 +65,7 @@ const isMenuItemActive = (itemUrl: string) => {
 <template>
   <SidebarProvider>
     <Sidebar>
-      <SidebarHeader>
+      <SidebarHeader class="px-8">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" as-child>
@@ -85,8 +85,7 @@ const isMenuItemActive = (itemUrl: string) => {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent>
-        <!-- Getting Started Section -->
+      <SidebarContent class="px-8">
         <SidebarGroup>
           <SidebarGroupLabel>Get Started</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -109,7 +108,6 @@ const isMenuItemActive = (itemUrl: string) => {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <!-- Components Section -->
         <SidebarGroup>
           <SidebarGroupLabel>Components</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -155,9 +153,9 @@ const isMenuItemActive = (itemUrl: string) => {
       </header>
 
       <div
-        class="px-16 relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px] h-screen"
+        class="px-16 relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]"
       >
-        <div class="overflow-y-auto scrollbar-hide scroll-smooth">
+        <div class="overflow-y-auto scrollbar-hide scroll-smooth h-screen">
           <router-view class="prose dark:prose-invert max-w-none" />
         </div>
 

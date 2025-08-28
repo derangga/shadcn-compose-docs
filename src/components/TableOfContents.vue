@@ -96,7 +96,7 @@ const handleClick = (headingId: string, event: Event) => {
   <aside
     v-if="shouldShow && headings.length > 0"
     :class="containerClass"
-    class="hidden lg:block"
+    class="hidden xl:block"
   >
     <div class="sticky top-4">
       <h2 class="text-sm font-medium mb-2">
