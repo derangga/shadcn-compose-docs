@@ -3,7 +3,10 @@ title: Installation
 description: Get started with our Shadcn Compose component library by following these simple installation steps.
 ---
 
-<HeaderDocs :title="frontmatter.title" :description="frontmatter.description"/>
+<DocsPage
+    :title="frontmatter.title" 
+    :description="frontmatter.description"
+    path="views/docs/Installation.md">
 
 ## Prerequisites
 
@@ -124,4 +127,4 @@ fun ExampleInput() {
 
 </Steps>
 
-<EditThisPage source="https://github.com/derangga/shadcn-compose-docs"/>
+</DocsPage>

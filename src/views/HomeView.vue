@@ -17,7 +17,7 @@ function scrollToExamples() {
 
 <template>
   <Header />
-  <div class="container mx-auto">
+  <div class="container mx-auto overflow-hidden">
     <Hero @scroll-to="scrollToExamples" />
     <Examples ref="examples" />
   </div>

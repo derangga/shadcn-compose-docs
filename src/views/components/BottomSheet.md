@@ -3,4 +3,9 @@ title: Bottom Sheet
 description: Displays a bottom sheet.
 ---
 
-<HeaderDocs :title="frontmatter.title" :description="frontmatter.description"/>
+<DocsPage 
+    :title="frontmatter.title" 
+    :description="frontmatter.description"
+    path="views/components/BottomSheet.md">
+
+</DocsPage>

@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-vue-next";
 import ButtonTheme from "./ButtonTheme.vue";
+import ButtonSearch from "../ButtonSearch.vue";
 
 const isDark = ref(false);
 
@@ -102,7 +103,12 @@ onMounted(() => {
         </Sheet>
       </div>
 
-      <div class="flex flex-row h-5 items-center gap-2">
+      <div
+        class="flex flex-row h-5 flex-1 items-center justify-between space-x-2 md:justify-end"
+      >
+        <div class="w-full flex-1 md:w-auto md:flex-none">
+          <ButtonSearch />
+        </div>
         <a
           href="https://github.com/derangga/shadcn-compose"
           class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground w-8 h-8"

@@ -49,59 +49,59 @@ const componentMenus = [
   },
   {
     title: "Date Picker",
-    url: "#",
+    url: "/docs/components/date-picker",
   },
   {
     title: "Dialog",
-    url: "#",
+    url: "/docs/components/dialog",
   },
   {
     title: "Dropdown Menu",
-    url: "#",
+    url: "/docs/components/dropdown-menu",
   },
   {
     title: "Input",
-    url: "#",
+    url: "/docs/components/input",
   },
   {
     title: "Popover",
-    url: "#",
+    url: "/docs/components/popover",
   },
   {
     title: "Progress",
-    url: "#",
+    url: "/docs/components/progress",
   },
   {
     title: "Radio Group",
-    url: "#",
+    url: "/docs/components/radio-group",
   },
   {
     title: "Select",
-    url: "#",
+    url: "/docs/components/select",
+  },
+  {
+    title: "Sidebar",
+    url: "/docs/components/sidebar",
   },
   {
     title: "Skeleton",
-    url: "#",
-  },
-  {
-    title: "Select",
-    url: "#",
+    url: "/docs/components/skeleton",
   },
   {
     title: "Slider",
-    url: "#",
+    url: "/docs/components/slider",
   },
   {
     title: "Sonner",
-    url: "#",
+    url: "/docs/components/sonner",
   },
   {
     title: "Switch",
-    url: "#",
+    url: "/docs/components/switch",
   },
   {
     title: "Tabs",
-    url: "#",
+    url: "/docs/components/tabs",
   },
 ];
 

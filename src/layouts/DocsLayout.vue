@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import { Info, Package, Palette } from "lucide-vue-next";
 import { Android } from "@/components/ui/icons";
 import {
   Sidebar,
   SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarInset,
   SidebarMenu,
@@ -27,45 +23,21 @@ import { Separator } from "@/components/ui/separator";
 import TableOfContents from "@/components/TableOfContents.vue";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
-import { cn } from "@/lib/utils";
-import componentMenus from "@/views/component_menus";
+import SidebarFooter from "@/components/ui/sidebar/SidebarFooter.vue";
+import NavComponents from "./NavComponents.vue";
+import NavGetStarted from "./NavGetStarted.vue";
+import NavFooter from "./NavFooter.vue";
 
 const route = useRoute();
 const pathname = computed(() => route.path);
 
-// Navigation menu items
-const navigationConfig = {
-  guides: [
-    {
-      title: "Introduction",
-      url: "/docs/introduction",
-      icon: Info,
-    },
-    {
-      title: "Installation",
-      url: "/docs/installation",
-      icon: Package,
-    },
-    {
-      title: "Theming",
-      url: "/docs/theming",
-      icon: Palette,
-    },
-  ],
-  components: componentMenus,
-};
-
 const hideTocPaths = ["/docs/components"];
-
-const isMenuItemActive = (itemUrl: string) => {
-  return pathname.value === itemUrl;
-};
 </script>
 
 <template>
   <SidebarProvider>
     <Sidebar>
-      <SidebarHeader class="px-8">
+      <SidebarHeader class="px-4">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" as-child>
@@ -85,50 +57,14 @@ const isMenuItemActive = (itemUrl: string) => {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent class="px-8">
-        <SidebarGroup>
-          <SidebarGroupLabel>Get Started</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem
-                v-for="item in navigationConfig.guides"
-                :key="item.title"
-              >
-                <SidebarMenuButton
-                  as-child
-                  :class="cn(isMenuItemActive(item.url) && 'bg-sidebar-accent')"
-                >
-                  <router-link :to="item.url">
-                    <component :is="item.icon" />
-                    <span>{{ item.title }}</span>
-                  </router-link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarGroupLabel>Components</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem
-                v-for="item in navigationConfig.components"
-                :key="item.title"
-              >
-                <SidebarMenuButton
-                  as-child
-                  :class="cn(isMenuItemActive(item.url) && 'bg-sidebar-accent')"
-                >
-                  <router-link :to="item.url">
-                    {{ item.title }}
-                  </router-link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+      <SidebarContent class="px-4">
+        <NavGetStarted :active-route="pathname" />
+        <NavComponents :active-route="pathname" />
       </SidebarContent>
+
+      <SidebarFooter>
+        <NavFooter />
+      </SidebarFooter>
     </Sidebar>
 
     <SidebarInset>

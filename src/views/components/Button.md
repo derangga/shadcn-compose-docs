@@ -3,8 +3,11 @@ title: Button
 description: Displays a button or a component that looks like a button.
 ---
 
-<HeaderDocs :title="frontmatter.title" :description="frontmatter.description"/>
+<DocsPage
+    :title="frontmatter.title" 
+    :description="frontmatter.description"
+    path="views/components/Button.md">
 
 <ComponentPreview name="button"  />
 
-<EditThisPage source="https://github.com/derangga/shadcn-compose-docs"/>
+</DocsPage>
