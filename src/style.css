@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "prismjs/themes/prism-tomorrow.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -132,4 +134,35 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer utilities {
+  .\[counter-reset\:step\] {
+    counter-reset: step;
+  }
+  .\[counter-increment\:step\] {
+    counter-increment: step;
+  }
+}
+
+.steps-counter {
+  counter-reset: step;
+}
+.steps-counter h4 {
+  counter-increment: step;
+  display: flex;
+  align-items: center;
+}
+.steps-counter h4::before {
+  content: counter(step);
+}
+
+/* style configuration for inline code */
+code:not([class*="language-"]) {
+  @apply bg-slate-100 px-1 py-0.5 rounded font-mono text-sm text-rose-600;
+}
+
+code:not([class*="language-"])::before,
+code:not([class*="language-"])::after {
+  display: none;
 }

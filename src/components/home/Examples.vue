@@ -113,3 +113,16 @@ function copyToClipboard(text: string, id: string) {
     </div>
   </section>
 </template>
+
+<style lang="css" scoped>
+@reference "../../style.css";
+
+code:not([class*="language-"]) {
+  @apply bg-transparent text-foreground;
+}
+
+code:not([class*="language-"])::before,
+code:not([class*="language-"])::after {
+  display: none;
+}
+</style>

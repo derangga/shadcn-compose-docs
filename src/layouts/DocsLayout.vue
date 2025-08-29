@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import { Info, Package, Palette } from "lucide-vue-next";
 import { Android } from "@/components/ui/icons";
 import {
   Sidebar,
   SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarInset,
   SidebarMenu,
@@ -24,137 +20,24 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
+import TableOfContents from "@/components/TableOfContents.vue";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
-import { cn } from "@/lib/utils";
+import SidebarFooter from "@/components/ui/sidebar/SidebarFooter.vue";
+import NavComponents from "./NavComponents.vue";
+import NavGetStarted from "./NavGetStarted.vue";
+import NavFooter from "./NavFooter.vue";
 
 const route = useRoute();
-
 const pathname = computed(() => route.path);
 
-// Menu items for the sidebar
-const guideMenus = [
-  {
-    title: "Introduction",
-    url: "/docs/introduction",
-    icon: Info,
-  },
-  {
-    title: "Installation",
-    url: "/docs/installation",
-    icon: Package,
-  },
-  {
-    title: "Theming",
-    url: "/docs/theming",
-    icon: Palette,
-  },
-];
-
-const componentMenus = [
-  {
-    title: "Accordion",
-    url: "/docs/components/accordion",
-  },
-  {
-    title: "Alert",
-    url: "/docs/components/alert",
-  },
-  {
-    title: "Alert Dialog",
-    url: "#",
-  },
-  {
-    title: "Avatar",
-    url: "#",
-  },
-  {
-    title: "Badge",
-    url: "#",
-  },
-  {
-    title: "Bottom Sheet",
-    url: "#",
-  },
-  {
-    title: "Calendar",
-    url: "#",
-  },
-  {
-    title: "Card",
-    url: "#",
-  },
-  {
-    title: "Checkbox",
-    url: "#",
-  },
-  {
-    title: "Combobox",
-    url: "#",
-  },
-  {
-    title: "Date Picker",
-    url: "#",
-  },
-  {
-    title: "Dialog",
-    url: "#",
-  },
-  {
-    title: "Dropdown Menu",
-    url: "#",
-  },
-  {
-    title: "Input",
-    url: "#",
-  },
-  {
-    title: "Popover",
-    url: "#",
-  },
-  {
-    title: "Progress",
-    url: "#",
-  },
-  {
-    title: "Radio Group",
-    url: "#",
-  },
-  {
-    title: "Select",
-    url: "#",
-  },
-  {
-    title: "Skeleton",
-    url: "#",
-  },
-  {
-    title: "Select",
-    url: "#",
-  },
-  {
-    title: "Slider",
-    url: "#",
-  },
-  {
-    title: "Sonner",
-    url: "#",
-  },
-  {
-    title: "Switch",
-    url: "#",
-  },
-  {
-    title: "Tabs",
-    url: "#",
-  },
-];
+const hideTocPaths = ["/docs/components"];
 </script>
 
 <template>
   <SidebarProvider>
     <Sidebar>
-      <SidebarHeader>
+      <SidebarHeader class="px-4">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" as-child>
@@ -174,44 +57,14 @@ const componentMenus = [
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Get Started</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem v-for="item in guideMenus" :key="item.title">
-                <SidebarMenuButton
-                  as-child
-                  :class="cn(pathname === item.url && 'bg-sidebar-accent')"
-                >
-                  <router-link :to="item.url">
-                    <component :is="item.icon" />
-                    <span>{{ item.title }}</span>
-                  </router-link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarGroupLabel>Components</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem v-for="item in componentMenus" :key="item.title">
-                <SidebarMenuButton
-                  as-child
-                  :class="cn(pathname === item.url && 'bg-sidebar-accent')"
-                >
-                  <router-link :to="item.url">
-                    {{ item.title }}
-                  </router-link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+      <SidebarContent class="px-4">
+        <NavGetStarted :active-route="pathname" />
+        <NavComponents :active-route="pathname" />
       </SidebarContent>
+
+      <SidebarFooter>
+        <NavFooter />
+      </SidebarFooter>
     </Sidebar>
 
     <SidebarInset>
@@ -224,7 +77,7 @@ const componentMenus = [
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem class="hidden md:block">
-                <BreadcrumbLink href="/"> Home </BreadcrumbLink>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator class="hidden md:block" />
               <BreadcrumbItem>
@@ -235,9 +88,50 @@ const componentMenus = [
         </div>
       </header>
 
-      <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
-        <router-view />
+      <div
+        class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]"
+      >
+        <div
+          class="overflow-y-auto scrollbar-hide scroll-smooth h-screen pl-16"
+        >
+          <router-view class="prose dark:prose-invert max-w-none" />
+        </div>
+
+        <TableOfContents
+          title="On This Page"
+          :hide-on-paths="hideTocPaths"
+          :max-level="3"
+          :min-level="2"
+          content-selector=".prose"
+          heading-selector="h2, h3"
+          scroll-container-selector=".overflow-y-auto"
+          :multiple-active="true"
+          :offset-top="100"
+          container-class="w-64 pl-4"
+          class="pr-16"
+        />
       </div>
     </SidebarInset>
   </SidebarProvider>
 </template>
+
+<style lang="css" scoped>
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Ensure headings have proper scroll margin */
+:deep(.prose h1),
+:deep(.prose h2),
+:deep(.prose h3),
+:deep(.prose h4),
+:deep(.prose h5),
+:deep(.prose h6) {
+  scroll-margin-top: 100px;
+}
+</style>
