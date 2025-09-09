@@ -7,10 +7,11 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs/index";
+import type { Component, Variant } from "@/types/content";
 import KotlinCodeBlock from "./KotlinCodeBlock.vue";
-import { content, type Variant } from "@/views/components/content";
+import componentDocs from "@/contents";
 interface Props {
-  name: string;
+  name: Component;
   variant?: string;
   align?: "center" | "start" | "end";
 }
@@ -24,10 +25,10 @@ const props = withDefaults(defineProps<Props>(), {
   variant: "default",
 });
 
-const componentDcos = ref<Variant[]>();
+const docs = ref<Variant[]>();
 
 onMounted(() => {
-  componentDcos.value = content().get(props.name) || [];
+  docs.value = componentDocs(props.name);
 });
 
 const tabs = ["Preview", "Code"];
@@ -35,7 +36,7 @@ const tabs = ["Preview", "Code"];
 
 <template>
   <div class="relative my-4 flex flex-col space-y-2">
-    <div v-for="variant in componentDcos" :key="variant.name">
+    <div v-for="variant in docs" :key="variant.name">
       <h2 v-if="variant.name" class="mt-8">{{ variant.name }}</h2>
       <Tabs default-value="preview" class="relative mr-auto w-full">
         <div class="flex items-center justify-between pb-3">

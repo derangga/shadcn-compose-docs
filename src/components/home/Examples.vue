@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { ref, useTemplateRef } from "vue";
+import { computed, ref, useTemplateRef } from "vue";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Copy } from "lucide-vue-next";
 
+import "prismjs/components/prism-kotlin";
+import "prismjs/components/prism-jsx";
+import Prism from "prismjs";
+
 const copiedCode = ref<string | null>(null);
 const examplesInner = useTemplateRef<HTMLElement>("examples-inner");
-
-defineExpose({ examplesInner });
 
 const codeExamples = {
   react: `
@@ -37,6 +39,20 @@ fun MyButton() {
     }
 }`,
 };
+
+defineExpose({ examplesInner });
+
+const kotlinCode = computed(() => {
+  return Prism.highlight(
+    codeExamples.kotlin,
+    Prism.languages["kotlin"],
+    "kotlin"
+  );
+});
+
+const javascriptCode = computed(() => {
+  return Prism.highlight(codeExamples.react, Prism.languages["jsx"], "jsx");
+});
 
 function copyToClipboard(text: string, id: string) {
   navigator.clipboard.writeText(text);
@@ -80,9 +96,11 @@ function copyToClipboard(text: string, id: string) {
             </div>
           </CardHeader>
           <CardContent>
-            <pre class="text-sm bg-muted p-4 rounded-lg overflow-x-auto">
-                  <code class="text-muted-foreground">{{ codeExamples.react }}</code>
+            <div class="prose dark:prose-invert">
+              <pre class="language-js">
+                  <code class="language-js" v-html="javascriptCode"></code>
                 </pre>
+            </div>
           </CardContent>
         </Card>
 
@@ -104,25 +122,14 @@ function copyToClipboard(text: string, id: string) {
             </div>
           </CardHeader>
           <CardContent>
-            <pre class="text-sm bg-muted p-4 rounded-lg overflow-x-auto">
-                  <code class="text-muted-foreground">{{ codeExamples.kotlin }}</code>
+            <div class="prose dark:prose-invert">
+              <pre class="language-kotlin">
+                  <code class="language-kotlin" v-html="kotlinCode"></code>
                 </pre>
+            </div>
           </CardContent>
         </Card>
       </div>
     </div>
   </section>
 </template>
-
-<style lang="css" scoped>
-@reference "../../style.css";
-
-code:not([class*="language-"]) {
-  @apply bg-transparent text-foreground;
-}
-
-code:not([class*="language-"])::before,
-code:not([class*="language-"])::after {
-  display: none;
-}
-</style>
