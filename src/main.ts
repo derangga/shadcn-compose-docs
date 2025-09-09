@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import router from "./router";
+import "prismjs/themes/prism.css";
 import "./style.css";
 import App from "./App.vue";
 
