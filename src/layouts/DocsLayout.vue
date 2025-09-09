@@ -96,9 +96,9 @@ const hideTocPaths = ["/docs/components"];
         class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]"
       >
         <div
-          class="overflow-y-auto scrollbar-hide scroll-smooth h-screen pl-16"
+          class="overflow-y-auto scrollbar-hide scroll-smooth h-screen px-3 sm:px-0"
         >
-          <router-view class="prose dark:prose-invert xl:max-w-none" />
+          <router-view class="prose dark:prose-invert mx-auto" />
         </div>
 
         <TableOfContents

@@ -1,14 +1,5 @@
-export type Content = {
-  image: string;
-  code: string;
-};
-export type Variant = {
-  name: string;
-  content: Content;
-};
-export function content() {
-  const contents = new Map<string, Variant[]>();
-  contents.set("button", [
+export default function buttonDocs() {
+  return [
     {
       name: "Default",
       content: {
@@ -111,6 +102,5 @@ Button(
             `,
       },
     },
-  ]);
-  return contents;
+  ];
 }
