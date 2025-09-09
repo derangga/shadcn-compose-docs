@@ -8,4 +8,6 @@ description: A vertically stacked set of interactive headings that each reveal a
     :description="frontmatter.description"
     path="views/components/Accordion.md">
 
+<ComponentPreview name="accordion"  />
+
 </DocsPage>

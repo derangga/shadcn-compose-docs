@@ -36,7 +36,7 @@ const tabs = ["Preview", "Code"];
 <template>
   <div class="relative my-4 flex flex-col space-y-2">
     <div v-for="variant in componentDcos" :key="variant.name">
-      <h2 class="mt-8">{{ variant.name }}</h2>
+      <h2 v-if="variant.name" class="mt-8">{{ variant.name }}</h2>
       <Tabs default-value="preview" class="relative mr-auto w-full">
         <div class="flex items-center justify-between pb-3">
           <TabsList
