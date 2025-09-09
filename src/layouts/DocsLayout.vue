@@ -27,6 +27,7 @@ import SidebarFooter from "@/components/ui/sidebar/SidebarFooter.vue";
 import NavComponents from "./NavComponents.vue";
 import NavGetStarted from "./NavGetStarted.vue";
 import NavFooter from "./NavFooter.vue";
+import ButtonSearch from "@/components/ButtonSearch.vue";
 
 const route = useRoute();
 const pathname = computed(() => route.path);
@@ -53,6 +54,9 @@ const hideTocPaths = ["/docs/components"];
                 </div>
               </router-link>
             </SidebarMenuButton>
+            <div class="w-full flex-1 overflow-hidden px-2 mt-3">
+              <ButtonSearch placeholder-screen-lg="Search" />
+            </div>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
@@ -94,7 +98,7 @@ const hideTocPaths = ["/docs/components"];
         <div
           class="overflow-y-auto scrollbar-hide scroll-smooth h-screen pl-16"
         >
-          <router-view class="prose dark:prose-invert max-w-none" />
+          <router-view class="prose dark:prose-invert xl:max-w-none" />
         </div>
 
         <TableOfContents

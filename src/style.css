@@ -136,6 +136,32 @@
   }
 }
 
+@layer components {
+  /* Match Prism's exact selector pattern */
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    @apply p-4 rounded-lg;
+    text-shadow: none !important;
+  }
+
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none !important;
+  }
+
+  .token {
+    text-shadow: none !important;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    background: transparent !important;
+  }
+}
+
 @layer utilities {
   .\[counter-reset\:step\] {
     counter-reset: step;

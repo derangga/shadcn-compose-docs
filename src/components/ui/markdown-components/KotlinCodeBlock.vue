@@ -28,13 +28,9 @@ const highlightedCode = computed(() => {
 </script>
 
 <template>
-  <div
-    class="code-block-wrapper border border-primary relative my-6 bg-primary rounded-sm"
-  >
+  <div class="code-block-wrapper border relative my-6 bg-secondary rounded-sm">
     <div class="flex items-center justify-between px-4 py-2">
-      <span class="text-sm font-medium text-muted capitalize">{{
-        language
-      }}</span>
+      <span class="text-sm font-medium capitalize">{{ language }}</span>
       <Button @click="copy()" :class="{ 'text-green-400': copied }">
         <Check v-if="copied" class="w-4 h-4" />
         <Copy v-else class="w-4 h-4" />
