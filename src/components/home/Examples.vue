@@ -97,8 +97,8 @@ function copyToClipboard(text: string, id: string) {
           </CardHeader>
           <CardContent>
             <div class="prose dark:prose-invert">
-              <pre class="language-js">
-                  <code class="language-js" v-html="javascriptCode"></code>
+              <pre class="language-jsx h-80">
+                  <code class="language-jsx" v-html="javascriptCode"></code>
                 </pre>
             </div>
           </CardContent>
@@ -123,7 +123,7 @@ function copyToClipboard(text: string, id: string) {
           </CardHeader>
           <CardContent>
             <div class="prose dark:prose-invert">
-              <pre class="language-kotlin">
+              <pre class="language-kotlin h-80">
                   <code class="language-kotlin" v-html="kotlinCode"></code>
                 </pre>
             </div>
