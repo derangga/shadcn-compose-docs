@@ -79,4 +79,34 @@ Alert(
 
 ## Custom Styles
 
+You can also customizing the alert color
+
+<TabPreview>
+
+<template #Preview>
+<Preview name="alert" variant="custom-color"/>
+</template>
+
+<template #Code>
+
+```kotlin
+Alert(
+    icon = {
+        Icon(Icons.Default.Info, contentDescription = "Info", tint = MaterialTheme.shadcnColors.primaryForeground)
+    },
+    title = { Text("Information") },
+    description = { Text("This is a helpful information that you need to know") },
+    colors = AlertDefaults.colors().copy(
+        backgroundColor = MaterialTheme.shadcnColors.chart2,
+        borderColors = MaterialTheme.shadcnColors.chart2,
+        titleColor = MaterialTheme.shadcnColors.primaryForeground,
+        descriptionColor = MaterialTheme.shadcnColors.primaryForeground
+    )
+)
+```
+
+</template>
+
+</TabPreview>
+
 </DocsPage>
