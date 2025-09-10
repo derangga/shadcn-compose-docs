@@ -11,7 +11,8 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   align: "center",
-  names: () => ["CLI", "Manual"],
+  name: "Preview",
+  names: () => ["Preview", "Code"],
 });
 </script>
 

@@ -19,17 +19,19 @@ const source = computed(
 </script>
 
 <template>
-  <div>
-    <h1
-      class="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl text-foreground"
-    >
-      {{ title }}
-    </h1>
-    <p class="text-muted-foreground text-[1.05rem] sm:text-base">
-      {{ description }}
-    </p>
-    <Separator />
+  <div class="mb-40">
+    <div>
+      <h1
+        class="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl text-foreground"
+      >
+        {{ title }}
+      </h1>
+      <p class="text-muted-foreground text-[1.05rem] sm:text-base">
+        {{ description }}
+      </p>
+      <Separator />
+    </div>
+    <slot />
+    <EditThisPage :source="source" />
   </div>
-  <slot />
-  <EditThisPage :source="source" />
 </template>

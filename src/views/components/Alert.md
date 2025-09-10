@@ -7,4 +7,76 @@ description: Displays a callout for user attention.
     :title="frontmatter.title" 
     :description="frontmatter.description"
     path="views/components/Alert.md">
+
+## Default
+
+<TabPreview>
+
+<template #Preview>
+<Preview name="alert" variant="default"/>
+</template>
+
+<template #Code>
+
+```kotlin
+Alert(
+    title = { Text("Heads up!") },
+    description = { Text("You can add components to your app using the cli.") }
+)
+```
+
+</template>
+
+</TabPreview>
+
+## Destructive
+
+<TabPreview>
+
+<template #Preview>
+<Preview name="alert" variant="destructive"/>
+</template>
+
+<template #Code>
+
+```kotlin
+Alert(
+    variant = AlertVariant.Destructive,
+    title = { Text("Error") },
+    description = { Text("Your session has expired. Please log in again.") }
+)
+```
+
+</template>
+
+</TabPreview>
+
+## With Icon
+
+<TabPreview>
+
+<template #Preview>
+<Preview name="alert" variant="with-icon"/>
+</template>
+
+<template #Code>
+
+```kotlin
+Alert(
+    icon = {
+        // Placeholder for an actual icon
+        // For demonstration, a simple text icon
+        Text("💡", fontSize = 24.sp)
+    },
+    title = { Text("Tip!") },
+    description = { Text("This is a helpful tip for using the application effectively.") }
+)
+```
+
+</template>
+
+</TabPreview>
+
+## Custom Styles
+
 </DocsPage>
