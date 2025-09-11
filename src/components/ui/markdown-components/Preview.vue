@@ -5,15 +5,18 @@ import { computed } from "vue";
 interface Props {
   name: string;
   variant: string;
+  assetExtension: ".webp" | ".gif";
   align?: "center" | "start" | "end";
 }
 
 const props = withDefaults(defineProps<Props>(), {
   align: "center",
+  assetExtension: ".webp",
 });
 
 const imagePath = computed(
-  () => `/src/assets/components/${props.name}/${props.variant}.webp`
+  () =>
+    `/src/assets/components/${props.name}/${props.variant}${props.assetExtension}`
 );
 </script>
 

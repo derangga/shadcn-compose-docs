@@ -21,6 +21,9 @@ description: A vertically stacked set of interactive headings that each reveal a
 <template #Code>
 
 ```kotlin
+import com.drna.shadcn.compose.component.Accordion
+import com.drna.shadcn.compose.component.AccordionItemData
+
 fun Example() {
     val accordionItems = listOf(
         AccordionItemData(
