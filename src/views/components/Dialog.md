@@ -26,6 +26,7 @@ import com.drna.shadcn.compose.component.DialogCancel
 import com.drna.shadcn.compose.component.DialogDescription
 import com.drna.shadcn.compose.component.DialogTitle
 
+@Composable
 fun ExampleDialog() {
     var showDialog by remember { mutableStateOf(false) }
 
@@ -38,8 +39,9 @@ fun ExampleDialog() {
         Button(onClick = { showDialog = true }) {
             Text("Open Dialog")
         }
+    }
 
-        Dialog(
+    Dialog(
             open = showDialog,
             onDismissRequest = { showDialog = false },
             header = {
@@ -58,7 +60,6 @@ fun ExampleDialog() {
                 }
             }
         )
-    }
 }
 ```
 
@@ -85,6 +86,7 @@ import com.drna.shadcn.compose.component.DialogDescription
 import com.drna.shadcn.compose.component.DialogTitle
 import com.drna.shadcn.compose.component.Input
 
+@Composable
 fun ExampleDialog() {
     var showDialog by remember { mutableStateOf(false) }
     var nameTxt by remember { mutableStateOf("John Doe") }

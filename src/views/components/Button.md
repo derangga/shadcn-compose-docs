@@ -35,9 +35,7 @@ Button(
 <TabPreview>
 
 <template #Preview>
-
 <Preview name="button" variant="destructive"/>
-
 </template>
 
 <template #Code>
@@ -58,9 +56,7 @@ Button(
 <TabPreview>
 
 <template #Preview>
-
 <Preview name="button" variant="secondary"/>
-
 </template>
 
 <template #Code>
@@ -81,9 +77,7 @@ Button(
 <TabPreview>
 
 <template #Preview>
-
 <Preview name="button" variant="link"/>
-
 </template>
 
 <template #Code>
@@ -104,9 +98,7 @@ Button(
 <TabPreview>
 
 <template #Preview>
-
 <Preview name="button" variant="ghost"/>
-
 </template>
 
 <template #Code>
@@ -127,9 +119,7 @@ Button(
 <TabPreview>
 
 <template #Preview>
-
 <Preview name="button" variant="outline"/>
-
 </template>
 
 <template #Code>
@@ -148,9 +138,7 @@ Button(
 ## Icon
 
 <TabPreview>
-
 <template #Preview>
-
 <Preview name="button" variant="icon"/>
 
 </template>
@@ -174,9 +162,7 @@ Button(
 ## With Icon
 
 <TabPreview>
-
 <template #Preview>
-
 <Preview name="button" variant="with-icon"/>
 
 </template>
