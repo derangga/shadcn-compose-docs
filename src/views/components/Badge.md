@@ -192,7 +192,7 @@ fun Example() {
 
 </TabPreview>
 
-## Custom
+## Custom Styles
 
 <TabPreview>
 
