@@ -20,8 +20,8 @@ const componentMenus = [
     url: "/docs/components/badge",
   },
   {
-    title: "Bottom Sheet",
-    url: "/docs/components/bottom-sheet",
+    title: "Drawer (Bottom Sheet)",
+    url: "/docs/components/drawer",
   },
   {
     title: "Button",

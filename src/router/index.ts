@@ -57,9 +57,9 @@ const routes: RouteRecordRaw[] = [
         component: () => import("@/views/components/Badge.md"),
       },
       {
-        path: "components/bottom-sheet",
+        path: "components/drawer",
         name: "BottomSheet",
-        component: () => import("@/views/components/BottomSheet.md"),
+        component: () => import("@/views/components/Drawer.md"),
       },
       {
         path: "components/button",
