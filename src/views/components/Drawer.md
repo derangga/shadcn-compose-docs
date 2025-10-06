@@ -8,7 +8,7 @@ description: Displays a bottom sheet.
     :description="frontmatter.description"
     path="views/components/BottomSheet.md">
 
-## Basic Usage
+## Usage
 
 <TabPreview>
 
@@ -32,7 +32,7 @@ fun Example() {
     val scope = rememberCoroutineScope()
 
     Column(
-        modifier = Modifier.padding(ip)
+        modifier = Modifier
             .fillMaxSize()
             .padding(start = 16.dp, end = 16.dp, top = 56.dp),
         horizontalAlignment = Alignment.CenterHorizontally

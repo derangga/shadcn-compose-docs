@@ -8,7 +8,7 @@ description: A modal dialog that interrupts the user with important content and 
     :description="frontmatter.description"
     path="views/components/AlertDialog.md">
 
-## Basic Usage
+## Usage
 
 <TabPreview>
 

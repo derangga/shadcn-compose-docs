@@ -21,9 +21,25 @@ description: Displays a button or a component that looks like a button.
 <template #Code>
 
 ```kotlin
-Button(
-    onClick = { },
-) { Text("Normal") }
+import com.drna.shadcn.compose.component.Button
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                // TODO: click action
+            }
+        ) {
+            Text("Normal")
+        }
+    }
+}
 ```
 
 </template>
@@ -41,10 +57,27 @@ Button(
 <template #Code>
 
 ```kotlin
-Button(
-    onClick = { },
-    variant = ButtonVariant.Destructive,
-) { Text("Destructive") }
+import com.drna.shadcn.compose.component.Button
+import com.drna.shadcn.compose.component.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                 // TODO: click action
+            },
+            variant = ButtonVariant.Destructive
+        ) {
+            Text("Destructive")
+        }
+    }
+}
 ```
 
 </template>
@@ -62,10 +95,27 @@ Button(
 <template #Code>
 
 ```kotlin
-Button(
-    onClick = { },
-    variant = ButtonVariant.Secondary,
-) { Text("Secondary") }
+import com.drna.shadcn.compose.component.Button
+import com.drna.shadcn.compose.component.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                 // TODO: click action
+            },
+            variant = ButtonVariant.Secondary
+        ) {
+            Text("Secondary")
+        }
+    }
+}
 ```
 
 </template>
@@ -83,10 +133,27 @@ Button(
 <template #Code>
 
 ```kotlin
-Button(
-    onClick = { },
-    variant = ButtonVariant.Link,
-) { Text("Link") }
+import com.drna.shadcn.compose.component.Button
+import com.drna.shadcn.compose.component.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                // TODO: click action
+            },
+            variant = ButtonVariant.Link,
+        ) {
+            Text("Link")
+        }
+    }
+}
 ```
 
 </template>
@@ -104,10 +171,28 @@ Button(
 <template #Code>
 
 ```kotlin
-Button(
-    onClick = { },
-    variant = ButtonVariant.Ghost,
-) { Text("Ghost") }
+import com.drna.shadcn.compose.component.Button
+import com.drna.shadcn.compose.component.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                // TODO: click action
+            },
+            variant = ButtonVariant.Ghost,
+        )
+        {
+            Text("Ghost")
+        }
+    }
+}
 ```
 
 </template>
@@ -125,10 +210,27 @@ Button(
 <template #Code>
 
 ```kotlin
-Button(
-    onClick = { },
-    variant = ButtonVariant.Outline,
-) { Text("Outline") }
+import com.drna.shadcn.compose.component.Button
+import com.drna.shadcn.compose.component.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                // TODO: click action
+            },
+            variant = ButtonVariant.Outline,
+        ) {
+            Text("Outline")
+        }
+    }
+}
 ```
 
 </template>
@@ -146,12 +248,27 @@ Button(
 <template #Code>
 
 ```kotlin
-Button(
-    onClick = { },
-    size = ButtonSize.Icon,
-    variant = ButtonVariant.Outline
-) {
-    Icon(Icons.Default.AccountCircle, contentDescription = "Icon")
+import com.drna.shadcn.compose.component.Button
+import com.drna.shadcn.compose.component.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                // TODO: click action
+            },
+            size = ButtonSize.Icon,
+            variant = ButtonVariant.Outline
+        ) {
+            Icon(Icons.Default.AccountCircle, contentDescription = "Icon")
+        }
+    }
 }
 ```
 
@@ -170,12 +287,27 @@ Button(
 <template #Code>
 
 ```kotlin
-Button(
-    onClick = { }
-) {
-    Icon(imageVector = Icons.Default.AccountCircle, contentDescription = "Icon")
-    Spacer(Modifier.width(8.dp))
-    Text("Account")
+import com.drna.shadcn.compose.component.Button
+import com.drna.shadcn.compose.component.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                // TODO: click action
+            }
+        ) {
+            Icon(imageVector = Icons.Default.AccountCircle, contentDescription = "Icon")
+            Spacer(Modifier.width(8.dp))
+            Text("Account")
+        }
+    }
 }
 ```
 

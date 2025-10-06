@@ -26,7 +26,7 @@ fun Example() {
     val verticalAsset = listOf(R.drawable.store_1, R.drawable.store_2, R.drawable.store_3)
 
     Column(
-        modifier = Modifier.padding(ip)
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -71,7 +71,7 @@ fun Example() {
     val verticalAsset = listOf(R.drawable.store_1, R.drawable.store_2, R.drawable.store_3)
 
     Column(
-        modifier = Modifier.padding(ip)
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -117,7 +117,7 @@ fun Example() {
     val horizontalAsset = listOf(R.drawable.store_h_1, R.drawable.store_h_2, R.drawable.store_h_3)
 
     Column(
-        modifier = Modifier.padding(ip)
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally

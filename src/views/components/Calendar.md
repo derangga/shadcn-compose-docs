@@ -25,7 +25,7 @@ fun Example() {
     var selectedDate by remember { mutableStateOf<LocalDate?>(LocalDate.now()) }
 
     Column(
-        modifier = Modifier.padding(ip)
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -64,7 +64,7 @@ fun Example() {
     var selectedDate by remember { mutableStateOf<LocalDate?>(LocalDate.now()) }
 
     Column(
-        modifier = Modifier.padding(ip)
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -104,7 +104,7 @@ fun Example() {
     var selectedDate by remember { mutableStateOf<LocalDate?>(LocalDate.now()) }
 
     Column(
-        modifier = Modifier.padding(ip)
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -145,7 +145,7 @@ fun Example() {
     var selectedDate by remember { mutableStateOf<LocalDate?>(LocalDate.now()) }
 
     Column(
-        modifier = Modifier.padding(ip)
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally

@@ -20,10 +20,6 @@ const componentMenus = [
     url: "/docs/components/badge",
   },
   {
-    title: "Drawer (Bottom Sheet)",
-    url: "/docs/components/drawer",
-  },
-  {
     title: "Button",
     url: "/docs/components/button",
   },
@@ -54,6 +50,10 @@ const componentMenus = [
   {
     title: "Dialog",
     url: "/docs/components/dialog",
+  },
+  {
+    title: "Drawer (Bottom Sheet)",
+    url: "/docs/components/drawer",
   },
   {
     title: "Dropdown Menu",

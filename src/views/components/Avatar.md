@@ -24,7 +24,7 @@ import com.drna.shadcn.compose.component.Avatar
 @Composable
 fun Example() {
     Column(
-        modifier = Modifier.padding(ip)
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -58,7 +58,7 @@ import com.drna.shadcn.compose.component.Avatar
 @Composable
 fun Example() {
     Column(
-        modifier = Modifier.padding(ip)
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -90,7 +90,7 @@ import com.drna.shadcn.compose.component.Avatar
 @Composable
 fun Example() {
     Column(
-        modifier = Modifier.padding(ip)
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -127,7 +127,7 @@ import com.drna.shadcn.compose.component.Avatar
 @Composable
 fun Example() {
     Column(
-        modifier = Modifier.padding(ip)
+        modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 32.dp),
         horizontalAlignment = Alignment.CenterHorizontally
