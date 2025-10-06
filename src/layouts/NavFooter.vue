@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ButtonTheme from "@/components/home/ButtonTheme.vue";
 import { Github } from "@/components/ui/icons";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const isDark = ref(false);
 
@@ -9,6 +9,14 @@ function toggleDarkMode() {
   isDark.value = !isDark.value;
   updateTheme();
 }
+
+onMounted(() => {
+  const savedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  isDark.value = savedTheme === "dark" || (!savedTheme && prefersDark);
+  updateTheme();
+});
 
 const updateTheme = () => {
   if (isDark.value) {
