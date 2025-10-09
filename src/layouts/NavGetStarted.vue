@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Cuboid, Info, Package, Palette } from "lucide-vue-next";
+import { Cuboid, Info, Package } from "lucide-vue-next";
 import {
     SidebarGroup,
     SidebarGroupContent,
