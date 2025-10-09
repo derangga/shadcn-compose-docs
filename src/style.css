@@ -186,7 +186,7 @@
 
 /* style configuration for inline code */
 code:not([class*="language-"]) {
-  @apply bg-slate-100 px-1 py-0.5 rounded font-mono text-sm text-rose-600;
+  @apply bg-muted px-1 py-0.5 rounded font-mono text-sm text-foreground;
 }
 
 code:not([class*="language-"])::before,
