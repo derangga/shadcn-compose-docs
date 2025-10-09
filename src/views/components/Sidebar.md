@@ -21,7 +21,7 @@ A Sidebar component is composed of the following parts:
 - `SidebarGroup` - Section within the SidebarContent.
 - `SidebarTrigger` - Trigger for the Sidebar.
 
-<img src="/src/assets/components/sidebar/sidebar-structure.webp" alt="sidebar-structure"/>
+<img src="/assets/components/sidebar/sidebar-structure.webp" alt="sidebar-structure"/>
 
 ## Usage
 
@@ -204,7 +204,7 @@ fun SidebarLayoutPage() {
 #### Result
 You've created your first sidebar, you should see something like this:
 
-<img src="/src/assets/components/sidebar/default.gif"/>
+<img src="/assets/components/sidebar/default.gif"/>
 
 </Steps>
 
