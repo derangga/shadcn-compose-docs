@@ -12,8 +12,17 @@ import DocsPage from "./components/ui/markdown-components/DocsPage.vue";
 import Preview from "./components/ui/markdown-components/Preview.vue";
 import CodeWithFilename from "./components/ui/markdown-components/CodeWithFilename.vue";
 import CodeConverter from "./components/docs/CodeConverter.vue";
+import { createHead } from "@unhead/vue/client";
 
 const app = createApp(App);
+const head = createHead({
+  init: [
+    {
+      title: 'Shadcn Compose',
+      htmlAttrs: { lang: 'en' }
+    }
+  ]
+});
 app.component("TabPreview", TabPreview);
 app.component("Steps", Steps);
 app.component("HeaderDocs", HeaderDocs);
@@ -23,4 +32,5 @@ app.component("Preview", Preview);
 app.component("CodeWithFilename", CodeWithFilename);
 app.component("CodeConverter", CodeConverter);
 app.use(router);
+app.use(head)
 app.mount("#app");

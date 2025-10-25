@@ -1,5 +1,5 @@
 ---
-title: Drawer (Bottom Sheet)
+title: Drawer 
 description: Displays a bottom sheet.
 ---
 
