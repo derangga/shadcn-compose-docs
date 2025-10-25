@@ -309,11 +309,11 @@ function onOpenChange(value: boolean) {
       </CardFooter>
     </Card>
     <Dialog :open="showDialog" @update:open="onOpenChange">
-      <DialogContent class="sm:max-w-[720px]">
-        <DialogHeader>
+      <DialogContent class="md:max-w-[720px]">
+        <DialogHeader class="w-fit">
           <DialogTitle>Kotlin Class Output</DialogTitle>
         </DialogHeader>
-        <div class="w-full">
+        <div class="w-full overflow-x-hidden">
           <div
             class="prose dark:prose-invert border rounded-md overflow-hidden"
           >
