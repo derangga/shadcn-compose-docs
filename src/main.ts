@@ -11,6 +11,7 @@ import EditThisPage from "./components/ui/markdown-components/EditThisPage.vue";
 import DocsPage from "./components/ui/markdown-components/DocsPage.vue";
 import Preview from "./components/ui/markdown-components/Preview.vue";
 import CodeWithFilename from "./components/ui/markdown-components/CodeWithFilename.vue";
+import CodeConverter from "./components/docs/CodeConverter.vue";
 
 const app = createApp(App);
 app.component("TabPreview", TabPreview);
@@ -20,5 +21,6 @@ app.component("EditThisPage", EditThisPage);
 app.component("DocsPage", DocsPage);
 app.component("Preview", Preview);
 app.component("CodeWithFilename", CodeWithFilename);
+app.component("CodeConverter", CodeConverter);
 app.use(router);
 app.mount("#app");

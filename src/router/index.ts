@@ -27,6 +27,11 @@ const routes: RouteRecordRaw[] = [
         component: () => import("@/views/docs/Theming.md"),
       },
       {
+        path: "tailwind-to-kotlin",
+        name: "TailwindToKotlin",
+        component: () => import("@/views/docs/TailwindToKotlin.md"),
+      },
+      {
         path: "components",
         name: "Components",
         component: () => import("@/views/docs/ComponentsView.vue"),
