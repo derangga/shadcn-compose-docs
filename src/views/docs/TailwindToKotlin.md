@@ -6,7 +6,7 @@ description: Get color from tailwind css class and transform into kotlin class
 <DocsPage
     :title="frontmatter.title" 
     :description="frontmatter.description"
-    path="views/docs/Installation.md">
+    path="views/docs/TailwindToKotlin.md">
 
 ## How to use tailwind to kotlin converter?
 
@@ -20,4 +20,3 @@ description: Get color from tailwind css class and transform into kotlin class
 <CodeConverter/>
 
 </DocsPage>
-
