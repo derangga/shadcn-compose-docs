@@ -3,8 +3,8 @@ title: Alert
 description: Displays a callout for user attention.
 ---
 
-<DocsPage 
-    :title="frontmatter.title" 
+<DocsPage
+    :title="frontmatter.title"
     :description="frontmatter.description"
     path="views/components/Alert.md">
 
@@ -13,7 +13,9 @@ description: Displays a callout for user attention.
 <TabPreview>
 
 <template #Preview>
+
 <Preview name="alert" variant="default"/>
+
 </template>
 
 <template #Code>

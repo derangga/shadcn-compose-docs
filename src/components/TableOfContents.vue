@@ -51,7 +51,7 @@ const {
 const visibleHeadings = computed(() => {
   return headings.value.filter(
     (heading) =>
-      heading.level >= props.minLevel && heading.level <= props.maxLevel
+      heading.level >= props.minLevel && heading.level <= props.maxLevel,
   );
 });
 
