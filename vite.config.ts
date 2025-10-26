@@ -38,4 +38,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    allowedHosts: ["textbookish-cosmologic-chauncey.ngrok-free.dev"],
+  },
 });

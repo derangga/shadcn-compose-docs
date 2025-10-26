@@ -2,7 +2,7 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../tabs";
 
 interface Props {
-  name: string;
+  name?: string;
   names?: string[];
   align?: "center" | "start" | "end";
   sfcTsCode?: string;
