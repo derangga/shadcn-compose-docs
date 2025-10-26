@@ -11,7 +11,7 @@ interface Props {
 }
 
 type Status = "Loading" | "Loaded" | "Error";
-const SITE = "https://shadcn-compose.site";
+const SITE = "https://img.shadcn-compose.site";
 const props = withDefaults(defineProps<Props>(), {
   align: "center",
   assetExtension: ".webp",
