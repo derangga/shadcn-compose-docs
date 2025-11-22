@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Separator } from "@/components/ui/separator";
-import componentMenus from "../component_menus";
+import componentMenus from "@/lib/component-menu";
 </script>
 
 <template>
