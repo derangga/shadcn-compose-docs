@@ -61,7 +61,7 @@ Update your `build.gradle`
 
 ```gradle
 dependencies {
-    implementation 'com.github.derangga:shadcn-compose:0.1.2'
+    implementation 'com.github.derangga:shadcn-compose:1.0.0'
 }
 ```
 
@@ -71,7 +71,7 @@ dependencies {
 
 ```kts
 dependencies {
-    implementation("com.github.derangga:shadcn-compose:0.1.2")
+    implementation("com.github.derangga:shadcn-compose:1.0.0")
 }
 ```
 
