@@ -8,7 +8,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
-import componentMenus from "@/views/component_menus";
+import componentMenus from "@/lib/component-menu";
 
 interface Props {
   activeRoute: string;
