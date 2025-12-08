@@ -15,11 +15,11 @@ To use a Sonner (snackbar) shadcn compose, you need to use `Scaffold` as a root 
 ```kotlin
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
-import com.drna.shadcn.compose.themes.ShadcnTheme
-import com.drna.shadcn.compose.component.sooner.ObserveAsEvent
-import com.drna.shadcn.compose.component.sooner.SonnerHost
-import com.drna.shadcn.compose.component.sooner.SonnerProvider
-import com.drna.shadcn.compose.component.sooner.showSonner
+import com.shadcn.ui.themes.ShadcnTheme
+import com.shadcn.ui.components.sooner.ObserveAsEvent
+import com.shadcn.ui.components.sooner.SonnerHost
+import com.shadcn.ui.components.sooner.SonnerProvider
+import com.shadcn.ui.components.sooner.showSonner
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,9 +65,9 @@ class MainActivity : ComponentActivity() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.sooner.SonnerAction
-import com.drna.shadcn.compose.component.sooner.SonnerProvider
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.sooner.SonnerAction
+import com.shadcn.ui.components.sooner.SonnerProvider
 
 @Composable
 fun ExamplePage() {
@@ -113,9 +113,9 @@ fun ExamplePage() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.sooner.SonnerAction
-import com.drna.shadcn.compose.component.sooner.SonnerProvider
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.sooner.SonnerAction
+import com.shadcn.ui.components.sooner.SonnerProvider
 
 @Composable
 fun ExamplePage() {
@@ -162,9 +162,9 @@ fun ExamplePage() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.sooner.SonnerAction
-import com.drna.shadcn.compose.component.sooner.SonnerProvider
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.sooner.SonnerAction
+import com.shadcn.ui.components.sooner.SonnerProvider
 
 @Composable
 fun ExamplePage() {

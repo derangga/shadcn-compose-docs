@@ -19,7 +19,7 @@ description: Displays an indicator showing the completion progress of a task, ty
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Progress
+import com.shadcn.ui.components.Progress
 
 @Composable
 fun Example() {

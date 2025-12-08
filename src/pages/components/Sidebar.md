@@ -88,13 +88,13 @@ fun SidebarNavigation(sidebarNavHost: NavHostController) {
 <CodeWithFilename filename="AppSidebar.kt">
 
 ```kotlin
-import com.drna.shadcn.compose.component.sidebar.SidebarContent
-import com.drna.shadcn.compose.component.sidebar.SidebarGroup
-import com.drna.shadcn.compose.component.sidebar.SidebarGroupContent
-import com.drna.shadcn.compose.component.sidebar.SidebarGroupLabel
-import com.drna.shadcn.compose.component.sidebar.SidebarLayout
-import com.drna.shadcn.compose.component.sidebar.SidebarMenu
-import com.drna.shadcn.compose.component.sidebar.SidebarMenuButton
+import com.shadcn.ui.components.sidebar.SidebarContent
+import com.shadcn.ui.components.sidebar.SidebarGroup
+import com.shadcn.ui.components.sidebar.SidebarGroupContent
+import com.shadcn.ui.components.sidebar.SidebarGroupLabel
+import com.shadcn.ui.components.sidebar.SidebarLayout
+import com.shadcn.ui.components.sidebar.SidebarMenu
+import com.shadcn.ui.components.sidebar.SidebarMenuButton
 
 @Composable
 fun AppSidebar(sidebarNav: NavHostController, selectedMenu: String, onMenuClick: (String) -> Unit) {
@@ -134,12 +134,12 @@ fun AppSidebar(sidebarNav: NavHostController, selectedMenu: String, onMenuClick:
 <CodeWithFilename filename="Layout.kt">
 
 ```kotlin
-import com.drna.shadcn.compose.component.sidebar.SidebarFooter
-import com.drna.shadcn.compose.component.sidebar.SidebarHeader
-import com.drna.shadcn.compose.component.sidebar.SidebarLayout
-import com.drna.shadcn.compose.component.sidebar.SidebarMenuButton
-import com.drna.shadcn.compose.component.sidebar.SidebarProvider
-import com.drna.shadcn.compose.component.sidebar.SidebarTrigger
+import com.shadcn.ui.components.sidebar.SidebarFooter
+import com.shadcn.ui.components.sidebar.SidebarHeader
+import com.shadcn.ui.components.sidebar.SidebarLayout
+import com.shadcn.ui.components.sidebar.SidebarMenuButton
+import com.shadcn.ui.components.sidebar.SidebarProvider
+import com.shadcn.ui.components.sidebar.SidebarTrigger
 
 @Composable
 fun SidebarLayoutPage() {

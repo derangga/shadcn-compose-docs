@@ -19,8 +19,8 @@ description: A carousel with motion and swipe.
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Card
-import com.drna.shadcn.compose.component.Carousel
+import com.shadcn.ui.components.Card
+import com.shadcn.ui.components.Carousel
 
 fun Example() {
     val verticalAsset = listOf(R.drawable.store_1, R.drawable.store_2, R.drawable.store_3)
@@ -64,8 +64,8 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Card
-import com.drna.shadcn.compose.component.Carousel
+import com.shadcn.ui.components.Card
+import com.shadcn.ui.components.Carousel
 
 fun Example() {
     val verticalAsset = listOf(R.drawable.store_1, R.drawable.store_2, R.drawable.store_3)
@@ -110,8 +110,8 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Card
-import com.drna.shadcn.compose.component.Carousel
+import com.shadcn.ui.components.Card
+import com.shadcn.ui.components.Carousel
 
 fun Example() {
     val horizontalAsset = listOf(R.drawable.store_h_1, R.drawable.store_h_2, R.drawable.store_h_3)

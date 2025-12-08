@@ -19,12 +19,12 @@ description: Displays a bottom sheet.
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.Drawer
-import com.drna.shadcn.compose.component.DrawerAction
-import com.drna.shadcn.compose.component.DrawerCancel
-import com.drna.shadcn.compose.component.DrawerDescription
-import com.drna.shadcn.compose.component.DrawerTitle
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.Drawer
+import com.shadcn.ui.components.DrawerAction
+import com.shadcn.ui.components.DrawerCancel
+import com.shadcn.ui.components.DrawerDescription
+import com.shadcn.ui.components.DrawerTitle
 
 fun Example() {
     var showDialog by remember { mutableStateOf(false) }

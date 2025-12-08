@@ -19,7 +19,7 @@ description: A control that allows the user to toggle between checked and not ch
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Switch
+import com.shadcn.ui.components.Switch
 
 @Composable
 fun Example() {
@@ -56,7 +56,7 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Switch
+import com.shadcn.ui.components.Switch
 
 @Composable
 fun Example() {

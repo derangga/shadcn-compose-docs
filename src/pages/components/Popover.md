@@ -19,10 +19,10 @@ description: Displays rich content in a portal, triggered by a button.
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.ButtonSize
-import com.drna.shadcn.compose.component.ButtonVariant
-import com.drna.shadcn.compose.component.Popover
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonSize
+import com.shadcn.ui.components.ButtonVariant
+import com.shadcn.ui.components.Popover
 
 @Composable
 fun Example() {

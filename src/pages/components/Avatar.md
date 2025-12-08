@@ -19,7 +19,7 @@ description: An image element with a fallback for representing the user.
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Avatar
+import com.shadcn.ui.components.Avatar
 
 @Composable
 fun Example() {
@@ -53,7 +53,7 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Avatar
+import com.shadcn.ui.components.Avatar
 
 @Composable
 fun Example() {
@@ -85,7 +85,7 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Avatar
+import com.shadcn.ui.components.Avatar
 
 @Composable
 fun Example() {
@@ -122,7 +122,7 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Avatar
+import com.shadcn.ui.components.Avatar
 
 @Composable
 fun Example() {

@@ -21,12 +21,12 @@ description: A modal dialog that interrupts the user with important content and 
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.AlertDialog
-import com.drna.shadcn.compose.component.AlertDialogAction
-import com.drna.shadcn.compose.component.AlertDialogCancel
-import com.drna.shadcn.compose.component.AlertDialogDescription
-import com.drna.shadcn.compose.component.AlertDialogTitle
-import com.drna.shadcn.compose.component.Button
+import com.shadcn.ui.components.AlertDialog
+import com.shadcn.ui.components.AlertDialogAction
+import com.shadcn.ui.components.AlertDialogCancel
+import com.shadcn.ui.components.AlertDialogDescription
+import com.shadcn.ui.components.AlertDialogTitle
+import com.shadcn.ui.components.Button
 
 @Composable
 fun ExampleDialog() {

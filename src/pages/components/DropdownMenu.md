@@ -19,9 +19,9 @@ description: Displays a menu to the user — such as a set of actions or functio
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.DropdownMenu
-import com.drna.shadcn.compose.component.DropdownMenuItem
-import com.drna.shadcn.compose.component.DropdownMenuSeparator
+import com.shadcn.ui.components.DropdownMenu
+import com.shadcn.ui.components.DropdownMenuItem
+import com.shadcn.ui.components.DropdownMenuSeparator
 
 @Composable
 fun Example() {

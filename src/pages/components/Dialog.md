@@ -19,12 +19,12 @@ description: A window overlaid on either the primary window or another dialog wi
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.Dialog
-import com.drna.shadcn.compose.component.DialogAction
-import com.drna.shadcn.compose.component.DialogCancel
-import com.drna.shadcn.compose.component.DialogDescription
-import com.drna.shadcn.compose.component.DialogTitle
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.Dialog
+import com.shadcn.ui.components.DialogAction
+import com.shadcn.ui.components.DialogCancel
+import com.shadcn.ui.components.DialogDescription
+import com.shadcn.ui.components.DialogTitle
 
 @Composable
 fun ExampleDialog() {
@@ -78,13 +78,13 @@ fun ExampleDialog() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.Dialog
-import com.drna.shadcn.compose.component.DialogAction
-import com.drna.shadcn.compose.component.DialogCancel
-import com.drna.shadcn.compose.component.DialogDescription
-import com.drna.shadcn.compose.component.DialogTitle
-import com.drna.shadcn.compose.component.Input
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.Dialog
+import com.shadcn.ui.components.DialogAction
+import com.shadcn.ui.components.DialogCancel
+import com.shadcn.ui.components.DialogDescription
+import com.shadcn.ui.components.DialogTitle
+import com.shadcn.ui.components.Input
 
 @Composable
 fun ExampleDialog() {

@@ -19,7 +19,7 @@ description: An input where the user selects a value from within a given range.
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Slider
+import com.shadcn.ui.components.Slider
 
 @Composable
 fun Example() {
