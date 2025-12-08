@@ -19,12 +19,12 @@ description: Displays a card with header, content, and footer.
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Card
-import com.drna.shadcn.compose.component.CardContent
-import com.drna.shadcn.compose.component.CardDescription
-import com.drna.shadcn.compose.component.CardFooter
-import com.drna.shadcn.compose.component.CardHeader
-import com.drna.shadcn.compose.component.CardTitle
+import com.shadcn.ui.components.Card
+import com.shadcn.ui.components.CardContent
+import com.shadcn.ui.components.CardDescription
+import com.shadcn.ui.components.CardFooter
+import com.shadcn.ui.components.CardHeader
+import com.shadcn.ui.components.CardTitle
 
 @Composable
 fun Example() {
@@ -72,7 +72,7 @@ fun Example() {
 
 ```kotlin
 import coil3.compose.AsyncImage
-import com.drna.shadcn.compose.component.Card
+import com.shadcn.ui.components.Card
 
 @Composable
 fun Example() {

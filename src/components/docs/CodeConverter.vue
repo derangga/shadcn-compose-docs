@@ -371,9 +371,9 @@ function tailwindToKotlin(
     "import androidx.compose.runtime.Composable",
     "import androidx.compose.ui.graphics.Color",
     "import androidx.compose.ui.unit.dp",
-    "import com.drna.shadcn.compose.themes.ShadcnStyles",
-    "import com.drna.shadcn.compose.themes.BoxShadow",
-    "import com.drna.shadcn.compose.themes.styles",
+    "import com.shadcn.ui.themes.ShadcnStyles",
+    "import com.shadcn.ui.themes.BoxShadow",
+    "import com.shadcn.ui.themes.styles",
     "",
     "// NOTE: This file assumes the interface " +
       interfaceName +

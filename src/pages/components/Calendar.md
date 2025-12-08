@@ -19,7 +19,7 @@ description: A date field component that allows users to enter and edit date.
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Calendar
+import com.shadcn.ui.components.Calendar
 
 fun Example() {
     var selectedDate by remember { mutableStateOf<LocalDate?>(LocalDate.now()) }
@@ -57,8 +57,8 @@ Only enable calendar selection from past or today
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Calendar
-import com.drna.shadcn.compose.component.DateSelectionMode
+import com.shadcn.ui.components.Calendar
+import com.shadcn.ui.components.DateSelectionMode
 
 fun Example() {
     var selectedDate by remember { mutableStateOf<LocalDate?>(LocalDate.now()) }
@@ -97,8 +97,8 @@ Only enable calendar selection from future or today
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Calendar
-import com.drna.shadcn.compose.component.DateSelectionMode
+import com.shadcn.ui.components.Calendar
+import com.shadcn.ui.components.DateSelectionMode
 
 fun Example() {
     var selectedDate by remember { mutableStateOf<LocalDate?>(LocalDate.now()) }
@@ -137,9 +137,9 @@ You can also customize the calendar color style by passing `CalendarStyle` to th
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Calendar
-import com.drna.shadcn.compose.component.CalendarDefaults
-import com.drna.shadcn.compose.component.DateSelectionMode
+import com.shadcn.ui.components.Calendar
+import com.shadcn.ui.components.CalendarDefaults
+import com.shadcn.ui.components.DateSelectionMode
 
 fun Example() {
     var selectedDate by remember { mutableStateOf<LocalDate?>(LocalDate.now()) }

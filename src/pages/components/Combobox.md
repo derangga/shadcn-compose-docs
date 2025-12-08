@@ -19,7 +19,7 @@ description: Autocomplete input and command palette with a list of suggestions.
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.ComboBox
+import com.shadcn.ui.components.ComboBox
 
 @Composable
 fun Example() {

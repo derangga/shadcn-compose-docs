@@ -20,10 +20,10 @@ description: Displays a badge or a component that looks like a badge.
 
 ```kotlin
 import androidx.compose.material3.BadgedBox
-import com.drna.shadcn.compose.component.Badge
-import com.drna.shadcn.compose.component.BadgeVariant
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.ButtonSize
+import com.shadcn.ui.components.Badge
+import com.shadcn.ui.components.BadgeVariant
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonSize
 
 @Composable
 fun Example() {
@@ -69,7 +69,7 @@ fun Example() {
 
 ```kotlin
 import androidx.compose.material3.BadgedBox
-import com.drna.shadcn.compose.component.Badge
+import com.shadcn.ui.components.Badge
 
 @Composable
 fun Example() {
@@ -102,8 +102,8 @@ fun Example() {
 
 ```kotlin
 import androidx.compose.material3.BadgedBox
-import com.drna.shadcn.compose.component.Badge
-import com.drna.shadcn.compose.component.BadgeVariant
+import com.shadcn.ui.components.Badge
+import com.shadcn.ui.components.BadgeVariant
 
 @Composable
 fun Example() {
@@ -136,8 +136,8 @@ fun Example() {
 
 ```kotlin
 import androidx.compose.material3.BadgedBox
-import com.drna.shadcn.compose.component.Badge
-import com.drna.shadcn.compose.component.BadgeVariant
+import com.shadcn.ui.components.Badge
+import com.shadcn.ui.components.BadgeVariant
 
 @Composable
 fun Example() {
@@ -170,8 +170,8 @@ fun Example() {
 
 ```kotlin
 import androidx.compose.material3.BadgedBox
-import com.drna.shadcn.compose.component.Badge
-import com.drna.shadcn.compose.component.BadgeVariant
+import com.shadcn.ui.components.Badge
+import com.shadcn.ui.components.BadgeVariant
 
 @Composable
 fun Example() {
@@ -204,7 +204,7 @@ fun Example() {
 
 ```kotlin
 import androidx.compose.material3.BadgedBox
-import com.drna.shadcn.compose.component.Badge
+import com.shadcn.ui.components.Badge
 
 @Composable
 fun Example() {

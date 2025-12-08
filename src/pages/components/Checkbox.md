@@ -19,7 +19,7 @@ description: A control that allows the user to toggle between checked and not ch
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Checkbox
+import com.shadcn.ui.components.Checkbox
 
 @Composable
 fun Example() {
@@ -60,7 +60,7 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Checkbox
+import com.shadcn.ui.components.Checkbox
 
 fun Example() {
     var checkedState by remember { mutableStateOf(false) }
@@ -101,7 +101,7 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Checkbox
+import com.shadcn.ui.components.Checkbox
 
 fun Example() {
     var checkedState by remember { mutableStateOf(false) }

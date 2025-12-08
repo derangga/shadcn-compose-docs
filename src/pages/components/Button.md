@@ -21,7 +21,7 @@ description: Displays a button or a component that looks like a button.
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
+import com.shadcn.ui.components.Button
 
 @Composable
 fun Example() {
@@ -57,8 +57,8 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.ButtonVariant
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
 
 @Composable
 fun Example() {
@@ -95,8 +95,8 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.ButtonVariant
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
 
 @Composable
 fun Example() {
@@ -133,8 +133,8 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.ButtonVariant
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
 
 @Composable
 fun Example() {
@@ -171,8 +171,8 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.ButtonVariant
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
 
 @Composable
 fun Example() {
@@ -210,8 +210,8 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.ButtonVariant
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
 
 @Composable
 fun Example() {
@@ -248,8 +248,8 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.ButtonVariant
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
 
 @Composable
 fun Example() {
@@ -287,8 +287,8 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.ButtonVariant
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
 
 @Composable
 fun Example() {

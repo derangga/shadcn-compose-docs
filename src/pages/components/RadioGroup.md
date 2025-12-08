@@ -19,8 +19,8 @@ description: A set of checkable buttons—known as radio buttons—where no more
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.RadioButtonWithLabel
-import com.drna.shadcn.compose.component.RadioGroup
+import com.shadcn.ui.components.RadioButtonWithLabel
+import com.shadcn.ui.components.RadioGroup
 
 @Composable
 fun Example() {
@@ -72,8 +72,8 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.RadioButtonWithLabel
-import com.drna.shadcn.compose.component.RadioGroup
+import com.shadcn.ui.components.RadioButtonWithLabel
+import com.shadcn.ui.components.RadioGroup
 
 @Composable
 fun Example() {

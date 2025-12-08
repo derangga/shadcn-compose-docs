@@ -19,7 +19,7 @@ description: Displays a form input field or a component that looks like an input
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Input
+import com.shadcn.ui.components.Input
 
 @Composable
 fun Example() {
@@ -54,8 +54,8 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Input
-import com.drna.shadcn.compose.component.InputVariant
+import com.shadcn.ui.components.Input
+import com.shadcn.ui.components.InputVariant
 
 @Composable
 fun Example() {
@@ -97,7 +97,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import com.drna.shadcn.compose.component.Input
+import com.shadcn.ui.components.Input
 
 @Composable
 fun Example() {
@@ -152,8 +152,8 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Input
-import com.drna.shadcn.compose.component.InputVariant
+import com.shadcn.ui.components.Input
+import com.shadcn.ui.components.InputVariant
 
 @Composable
 fun Example() {
@@ -194,7 +194,7 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Input
+import com.shadcn.ui.components.Input
 
 @Composable
 fun Example() {
@@ -229,7 +229,7 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Input
+import com.shadcn.ui.components.Input
 
 @Composable
 fun Example() {
@@ -264,7 +264,7 @@ fun Example() {
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Input
+import com.shadcn.ui.components.Input
 
 @Composable
 fun Example() {

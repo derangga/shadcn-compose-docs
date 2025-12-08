@@ -19,7 +19,7 @@ description: Use to show a placeholder while content is loading.
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Skeleton
+import com.shadcn.ui.components.Skeleton
 
 @Composable
 fun Example() {

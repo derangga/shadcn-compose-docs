@@ -19,7 +19,7 @@ description: A date picker component with range and presets.
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.DatePicker
+import com.shadcn.ui.components.DatePicker
 
 @Composable
 fun Example() {

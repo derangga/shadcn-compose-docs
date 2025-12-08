@@ -106,7 +106,7 @@ onMounted(() => {
         class="w-fit flex flex-row h-5 items-center justify-between space-x-2 md:justify-end"
       >
         <a
-          href="https://github.com/derangga/shadcn-compose"
+          href="https://github.com/derangga/shadcn-ui-kmp"
           class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground w-8 h-8"
           target="_blank"
           rel="noopener noreferrer"

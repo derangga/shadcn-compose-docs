@@ -19,12 +19,12 @@ description: A set of layered sections of content—known as tab panels—that a
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.ButtonSize
-import com.drna.shadcn.compose.component.ButtonVariant
-import com.drna.shadcn.compose.component.Input
-import com.drna.shadcn.compose.component.Tabs
-import com.drna.shadcn.compose.component.TabsContent
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonSize
+import com.shadcn.ui.components.ButtonVariant
+import com.shadcn.ui.components.Input
+import com.shadcn.ui.components.Tabs
+import com.shadcn.ui.components.TabsContent
 
 @Composable
 fun Example() {

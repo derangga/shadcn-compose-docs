@@ -19,7 +19,7 @@ description: Displays a list of options for the user to pick from—triggered by
 <template #Code>
 
 ```kotlin
-import com.drna.shadcn.compose.component.Select
+import com.shadcn.ui.components.Select
 
 @Composable
 fun Example() {

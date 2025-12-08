@@ -1,5 +1,5 @@
 ## Overview
-This is a documentation web for [shadcn-compose](https://github.com/derangga/shadcn-compose) library
+This is a documentation web for [shadcn-compose](https://github.com/derangga/shadcn-ui-kmp) library
 
 ## Development
 - You must have node.js with version 20 or higher

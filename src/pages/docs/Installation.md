@@ -20,38 +20,6 @@ Before you begin, make sure you project have following this requirements:
 
 <Steps>
 
-#### Gradle Settings
-
-<TabPreview name="Groovy" :names="['Groovy', 'Kotlin']">
-<template #Groovy>
-
-```gradle
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        mavenCentral()
-        maven { url 'https://jitpack.io' }
-    }
-}
-```
-
-</template>
-
-<template #Kotlin>
-
-```kts
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        mavenCentral()
-        maven { url = uri("https://jitpack.io") }
-    }
-}
-```
-
-</template>
-</TabPreview>
-
 #### Update gradle dependency
 
 Update your `build.gradle`
@@ -61,7 +29,7 @@ Update your `build.gradle`
 
 ```gradle
 dependencies {
-    implementation 'com.github.derangga:shadcn-compose:1.0.0'
+    implementation 'io.github.derangga:shadcn-ui-kmp:0.1.0'
 }
 ```
 
@@ -71,7 +39,7 @@ dependencies {
 
 ```kts
 dependencies {
-    implementation("com.github.derangga:shadcn-compose:1.0.0")
+    implementation("io.github.derangga:shadcn-ui-kmp:0.1.0")
 }
 ```
 
@@ -96,8 +64,8 @@ class MainActivity : ComponentActivity() {
 #### Add components
 
 ```kotlin
-import com.drna.shadcn.compose.component.Button
-import com.drna.shadcn.compose.component.Input
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.Input
 
 @Composable
 fun ExampleInput() {
