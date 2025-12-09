@@ -18,14 +18,14 @@ Before you begin, make sure your project using Kotlin 2.2.0
 
 #### Update gradle dependency
 
-Update your `build.gradle`
+Update your `build.gradle` and you can check the [release tag](https://github.com/derangga/shadcn-ui-kmp/releases) for the latest version
 
 <TabPreview name="Groovy" :names="['Groovy', 'Kotlin']">
 <template #Groovy>
 
 ```gradle
 dependencies {
-    implementation 'io.github.derangga:shadcn-ui-kmp:0.1.0'
+    implementation 'io.github.derangga:shadcn-ui-kmp:0.2.0'
 }
 ```
 
@@ -35,7 +35,7 @@ dependencies {
 
 ```kts
 dependencies {
-    implementation("io.github.derangga:shadcn-ui-kmp:0.1.0")
+    implementation("io.github.derangga:shadcn-ui-kmp:0.2.0")
 }
 ```
 
