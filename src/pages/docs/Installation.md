@@ -10,11 +10,7 @@ description: Get started with our Shadcn Compose component library by following 
 
 ## Prerequisites
 
-Before you begin, make sure you project have following this requirements:
-
-- Kotlin 2.2.0
-- Jetpack compose bom 2025.07.00
-- Target minSDK 26: Required due to the use of java.time APIs (e.g., DayOfWeek.getDisplayName) in the Calendar component, which are available from API level 26.
+Before you begin, make sure your project using Kotlin 2.2.0
 
 ## Installation Steps
 
