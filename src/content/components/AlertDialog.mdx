@@ -1,0 +1,83 @@
+---
+title: Alert Dialog
+description: A modal dialog that interrupts the user with important content and expects a response.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+import { Steps } from "@/components/mdx/steps"
+import { CodeWithFilename } from "@/components/mdx/code-with-filename"
+import { CodeConverter } from "@/components/docs/code-converter"
+
+
+<DocsPage title={title} description={description} path="pages/components/AlertDialog.md">
+
+## Usage
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+
+<Preview name="alert-dialog" variant="default" assetExtension=".gif" />
+
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.AlertDialog
+import com.shadcn.ui.components.AlertDialogAction
+import com.shadcn.ui.components.AlertDialogCancel
+import com.shadcn.ui.components.AlertDialogDescription
+import com.shadcn.ui.components.AlertDialogTitle
+import com.shadcn.ui.components.Button
+
+@Composable
+fun ExampleDialog() {
+    var showDialog by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(onClick = { showDialog = true }) {
+            Text("Open Alert Dialog")
+        }
+    }
+
+    AlertDialog(
+        open = showDialog,
+        onDismissRequest = { showDialog = false },
+        title = { AlertDialogTitle { Text("Are you absolutely sure?") } },
+        description = {
+            AlertDialogDescription {
+                Text("This action cannot be undone. This will permanently delete your account and remove your data from our servers.")
+            }
+        },
+        actions = {
+            AlertDialogCancel(onClick = {
+                Toast.makeText(context, "Cancel clicked", Toast.LENGTH_SHORT).show()
+                showDialog = false
+            }) {
+                Text("Cancel")
+            }
+            Spacer(modifier = Modifier.width(8.dp))
+            AlertDialogAction(onClick = {
+                Toast.makeText(context, "Continue clicked", Toast.LENGTH_SHORT).show()
+                showDialog = false
+            }) {
+                Text("Continue")
+            }
+        }
+    )
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+</DocsPage>

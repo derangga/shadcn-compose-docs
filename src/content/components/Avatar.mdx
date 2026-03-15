@@ -1,0 +1,156 @@
+---
+title: Avatar
+description: An image element with a fallback for representing the user.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+import { Steps } from "@/components/mdx/steps"
+import { CodeWithFilename } from "@/components/mdx/code-with-filename"
+import { CodeConverter } from "@/components/docs/code-converter"
+
+
+<DocsPage title={title} description={description} path="pages/components/Avatar.md">
+
+## Basic Usage
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="avatar" variant="default" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Avatar
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Avatar(
+            imageUrl = "https://avatars.githubusercontent.com/u/124599?v=4",
+            contentDescription = "Avatar",
+            fallbackText = "CN"
+        )
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## With Text Fallback
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="avatar" variant="with-text-fallback" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Avatar
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Avatar(
+            fallbackText = "CN"
+        )
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## With Custom Fallback
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="avatar" variant="with-custom-fallback" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Avatar
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Avatar(
+            imageUrl = "https://invalid-image-url.com/nonexistent.png",
+            contentDescription = "Invalid Avatar",
+            fallbackText = "ERR",
+            errorContent = {
+                Text("❌")
+            }
+        )
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## With Loading
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="avatar" variant="with-loading" assetExtension=".gif" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Avatar
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Avatar(
+            imageUrl = "https://picsum.photos/200/300",
+            contentDescription = "Random Image",
+            fallbackText = "RI",
+            loadingContent = {
+                CircularProgressIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.shadcnColors.primary)
+            }
+        )
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+</DocsPage>
