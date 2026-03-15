@@ -256,7 +256,7 @@ code[data-theme*=" "] span {
 /* rehype-pretty-code styling */
 [data-rehype-pretty-code-figure] pre {
   @apply p-4 rounded-lg overflow-x-auto;
-  background-color: var(--shiki-light-bg);
+  background-color: oklch(0.975 0 0);
 }
 
 .dark [data-rehype-pretty-code-figure] pre {
