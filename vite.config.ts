@@ -1,44 +1,44 @@
 import path from "node:path";
 import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
+import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import Markdown from "unplugin-vue-markdown/vite";
-import Pages from "vite-plugin-pages";
-import Prism from "markdown-it-prism";
+import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
+import mdx from "@mdx-js/rollup";
+import remarkGfm from "remark-gfm";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    vue({
-      include: [/\.vue$/, /\.md$/],
+    TanStackRouterVite({
+      routesDirectory: "./src/routes",
+      generatedRouteTree: "./src/routeTree.gen.ts",
     }),
-    tailwindcss(),
-    Markdown({
-      markdownItOptions: {
-        html: true,
-        linkify: true,
-        typographer: true,
-      },
-      markdownItUses: [
+    mdx({
+      remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+      rehypePlugins: [
+        rehypeSlug,
         [
-          Prism,
+          rehypePrettyCode,
           {
-            defaultLanguage: "markup",
+            theme: {
+              dark: "github-dark",
+              light: "github-light",
+            },
           },
         ],
+        [rehypeAutolinkHeadings, { behavior: "wrap" }],
       ],
-      frontmatter: true,
     }),
-    Pages({
-      extensions: ["vue", "md"],
-    }),
+    react({ include: /\.(jsx|tsx|mdx)$/ }),
+    tailwindcss(),
   ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-  },
-  server: {
-    allowedHosts: ["textbookish-cosmologic-chauncey.ngrok-free.dev"],
   },
 });
