@@ -240,13 +240,32 @@ code:not([data-rehype-pretty-code-figure] code)::after {
   scroll-margin-top: 100px;
 }
 
+/* rehype-pretty-code dual theme support */
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+.dark code[data-theme*=" "],
+.dark code[data-theme*=" "] span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
 /* rehype-pretty-code styling */
 [data-rehype-pretty-code-figure] pre {
   @apply p-4 rounded-lg overflow-x-auto;
+  background-color: var(--shiki-light-bg);
+}
+
+.dark [data-rehype-pretty-code-figure] pre {
+  background-color: var(--shiki-dark-bg);
 }
 
 [data-rehype-pretty-code-figure] code {
   font-size: small;
+  background-color: transparent;
 }
 
 [data-rehype-pretty-code-figure] [data-line] {
