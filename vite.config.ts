@@ -17,23 +17,26 @@ export default defineConfig({
       routesDirectory: "./src/routes",
       generatedRouteTree: "./src/routeTree.gen.ts",
     }),
-    mdx({
-      remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
-      rehypePlugins: [
-        rehypeSlug,
-        [
-          rehypePrettyCode,
-          {
-            theme: {
-              dark: "github-dark",
-              light: "github-light",
+    {
+      enforce: "pre",
+      ...mdx({
+        remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+        rehypePlugins: [
+          rehypeSlug,
+          [
+            rehypePrettyCode,
+            {
+              theme: {
+                dark: "github-dark",
+                light: "github-light",
+              },
             },
-          },
+          ],
+          [rehypeAutolinkHeadings, { behavior: "wrap" }],
         ],
-        [rehypeAutolinkHeadings, { behavior: "wrap" }],
-      ],
-    }),
-    react({ include: /\.(jsx|tsx|mdx)$/ }),
+      }),
+    },
+    react(),
     tailwindcss(),
   ],
   resolve: {
