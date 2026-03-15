@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import Content, { title, description } from "@/content/components/Sonner.mdx";
+import Content, { frontmatter } from "@/content/components/Sonner.mdx";
 import { docsMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/docs/components/sonner")({
   component: () => <Content />,
-  head: () => ({ meta: docsMeta(title, description) }),
+  head: () => ({ meta: docsMeta(frontmatter.title, frontmatter.description) }),
 });
