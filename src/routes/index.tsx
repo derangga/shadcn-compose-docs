@@ -1,13 +1,27 @@
+import { useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { Header } from "@/components/home/header";
+import { Hero } from "@/components/home/hero";
+import { Examples } from "@/components/home/examples";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
 function HomePage() {
+  const examplesRef = useRef<HTMLElement>(null);
+
+  function scrollToExamples() {
+    examplesRef.current?.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <h1 className="text-4xl font-bold">Shadcn Compose</h1>
-    </div>
+    <>
+      <Header />
+      <div className="container mx-auto overflow-hidden">
+        <Hero onScrollTo={scrollToExamples} />
+        <Examples ref={examplesRef} />
+      </div>
+    </>
   );
 }

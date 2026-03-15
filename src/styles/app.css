@@ -223,6 +223,23 @@ code:not([data-rehype-pretty-code-figure] code)::after {
   display: none;
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  scroll-margin-top: 100px;
+}
+
 /* rehype-pretty-code styling */
 [data-rehype-pretty-code-figure] pre {
   @apply p-4 rounded-lg overflow-x-auto;
