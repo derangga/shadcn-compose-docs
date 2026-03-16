@@ -1,33 +1,38 @@
-# Code Style & Conventions
+# Style and Conventions
 
-## Vue Components
-- Always use `<script setup lang="ts">` (Composition API with TypeScript)
-- Props defined with `defineProps<Props>()` interface pattern, using `withDefaults()` when needed
-- Props interfaces extend from reka-ui's `PrimitiveProps` for UI primitives
-- Template comes after script block
-- Scoped styles with `<style lang="css" scoped>` when needed
+## TypeScript
+- Strict mode enabled (`noUnusedLocals`, `noUnusedParameters`, `verbatimModuleSyntax`)
+- Use `import type` for type-only imports (enforced by `verbatimModuleSyntax`)
+- Target: ES2022, module: ESNext, moduleResolution: bundler
 
-## File Organization
-- UI components: `src/components/ui/<component-name>/` with `index.ts` barrel export
-- Each UI component folder has an `index.ts` that re-exports the `.vue` component and any variants/types
-- Layouts: `src/layouts/`
-- Pages: `src/pages/` (Vue files and Markdown files)
-- Composables: `src/composables/`
-- Types: `src/types/`
+## Naming
+- React components: PascalCase
+- Route files: kebab-case (e.g., `alert-dialog.tsx`)
+- MDX content files: PascalCase (e.g., `AlertDialog.mdx`)
+- Hooks: `use-kebab-case.ts`
+- UI components: flat files under `src/components/ui/<name>.tsx`
 
-## Naming Conventions
-- Vue components: PascalCase filenames (e.g., `Button.vue`, `SidebarMenuButton.vue`)
-- TypeScript files: camelCase (e.g., `utils.ts`, `component-menu.ts`)
-- CSS classes: Tailwind utility classes, kebab-case for custom classes
-- Route paths: kebab-case (e.g., `/docs/tailwind-to-kotlin`)
-
-## Styling
-- Tailwind CSS 4 with CSS custom properties (oklch color space)
-- shadcn-vue "new-york" style variant
-- `cn()` utility for merging class names (clsx + tailwind-merge)
-- Dark mode via `.dark` class (custom variant)
-- Component variants via `class-variance-authority` (cva)
+## CSS / Styling
+- Tailwind CSS 4 classes directly in JSX
+- Use `cn()` from `@/lib/utils` for conditional class merging (clsx + tailwind-merge)
+- Use `cva` from `class-variance-authority` for component variants
+- No external CSS files unless necessary
+- CSS variables with oklch color space
 
 ## Imports
-- Use `@/` path alias for src-relative imports
-- Type imports use `import type { ... }`
+- Path alias: `@` maps to `src/`
+- Example: `import { Button } from "@/components/ui/button"`
+
+## Component Patterns
+- shadcn/ui new-york style
+- Radix UI headless primitives via `radix-ui` package
+- `forwardRef` pattern for UI components
+
+## Routing (TanStack Start)
+- File-based routing in `src/routes/`
+- Route tree auto-generated in `src/routeTree.gen.ts` — never edit manually
+- Root route (`__root.tsx`) renders full HTML document
+- Head meta/SEO configured via route's `head()` function
+
+## No linter/formatter/test configured
+- Only verification: `bun run build`

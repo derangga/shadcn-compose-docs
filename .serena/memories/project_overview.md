@@ -1,31 +1,30 @@
-# Project Overview: shadcn-compose-docs
+# Project Overview
 
-## Purpose
-Documentation website for [shadcn-compose](https://github.com/derangga/shadcn-ui-kmp) — a Kotlin Multiplatform (KMP) 
-port of shadcn/ui components for Jetpack Compose. The site documents installation, theming, and individual UI components.
-
-Live site: `shadcn-compose.site` (deployed on Cloudflare Workers via Wrangler)
+**shadcn-compose-docs** — Documentation website for [shadcn-compose](https://github.com/derangga/shadcn-ui-kmp), a Kotlin Multiplatform port of shadcn/ui for Jetpack Compose. Live at `shadcn-compose.site`.
 
 ## Tech Stack
-- **Framework**: Vue 3.5 with `<script setup lang="ts">` (Composition API)
-- **Build Tool**: Vite 7
-- **Language**: TypeScript 5.8
-- **Package Manager**: Bun (bun.lock)
-- **Styling**: Tailwind CSS 4 with CSS variables (oklch colors), tw-animate-css
-- **UI Components**: shadcn-vue (new-york style) with reka-ui as headless primitives
-- **Routing**: vue-router 4 (manual route definitions in `src/router/index.ts`)
-- **Content**: Markdown files rendered as Vue components via `unplugin-vue-markdown`
-- **Syntax Highlighting**: PrismJS with `prism-tomorrow` theme
-- **Icons**: lucide-vue-next
-- **SEO**: @unhead/vue
-- **Deployment**: Cloudflare Workers (wrangler.jsonc)
 
-## Key Architecture Decisions
-- Documentation pages are `.md` files in `src/pages/docs/` and `src/pages/components/`
-- Markdown files support embedded Vue components (TabPreview, Steps, HeaderDocs, etc.) registered globally in `main.ts`
-- UI components follow shadcn-vue patterns: each in its own folder under `src/components/ui/`
-- Component variants defined with `class-variance-authority` (cva)
-- Utility function `cn()` (clsx + tailwind-merge) in `src/lib/utils.ts`
-- Path alias: `@` → `src/`
-- No ESLint, Prettier, or other linting tools configured
-- No test framework configured
+- **React 19** + **TypeScript 5.8** + **Vite 7**
+- **TanStack Start** (SSR framework using `@tanstack/react-start` with file-based routing)
+  - Uses `tanstackStart()` Vite plugin and `@tanstack/react-router` for routing
+  - Auto-generated route tree in `src/routeTree.gen.ts` (do not edit)
+  - Root route at `src/routes/__root.tsx` renders full HTML document (`<html>`, `<head>`, `<body>`)
+  - `HeadContent`, `Outlet`, `Scripts` from `@tanstack/react-router` for SSR support
+- **Tailwind CSS 4** with `@tailwindcss/vite` plugin, CSS variables (oklch color space)
+- **shadcn/ui** (new-york style) with **Radix UI** (`radix-ui` v1.4) headless primitives
+- **Bun** as package manager
+- **MDX** via `@mdx-js/rollup` (pre-enforced plugin) with:
+  - `remark-gfm`, `remark-frontmatter`, `remark-mdx-frontmatter`
+  - `rehype-pretty-code` (Shiki, github-dark/github-light themes), `rehype-slug`, `rehype-autolink-headings`
+- **Cloudflare Workers** deployment via `@cloudflare/vite-plugin` + `wrangler`
+- **next-themes** for dark/light theme switching
+- **sonner** for toast notifications
+- **lucide-react** for icons
+
+## Key Differences from Pre-Migration
+
+- Previously: plain TanStack Router SPA with `main.tsx` entry point
+- Now: TanStack Start SSR with `@tanstack/react-start/plugin/vite`, no `main.tsx`
+- Root route renders the full HTML document (html/head/body)
+- Cloudflare plugin configured with `viteEnvironment: { name: "ssr" }`
+- SSR optimizeDeps configured for React packages

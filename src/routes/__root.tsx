@@ -39,7 +39,11 @@ export const Route = createRootRoute({
       },
       {
         property: "og:image",
-        content: "/og-image.webp",
+        content: "https://shadcn-compose.site/og-image.webp",
+      },
+      {
+        property: "og:locale",
+        content: "en_US",
       },
       {
         property: "og:url",
@@ -63,8 +67,8 @@ export const Route = createRootRoute({
           "shadcn-compose is inspired by shadcn, providing beautifully designed components that you can copy and paste into your apps",
       },
       {
-        property: "twitter:image",
-        content: "/og-image.webp",
+        name: "twitter:image",
+        content: "https://shadcn-compose.site/og-image.webp",
       },
     ],
     links: [
