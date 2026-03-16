@@ -7,7 +7,11 @@ export function docsMeta(title: string, description: string) {
     { property: "og:image", content: "/og-image.webp" },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
-    { property: "twitter:title", content: `Shadcn Compose Component: ${title}` },
+    {
+      property: "twitter:title",
+      content: `Shadcn Compose Component: ${title}`,
+    },
     { property: "twitter:description", content: description },
+    { property: "twitter:image", content: "/og-image.webp" },
   ];
 }
