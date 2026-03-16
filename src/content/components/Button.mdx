@@ -1,0 +1,323 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+import { Steps } from "@/components/mdx/steps"
+import { CodeWithFilename } from "@/components/mdx/code-with-filename"
+import { CodeConverter } from "@/components/docs/code-converter"
+
+
+<DocsPage title={frontmatter.title} description={frontmatter.description} path="pages/components/Button.md">
+
+## Default
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+
+<Preview name="button" variant="default" />
+
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Button
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                // TODO: click action
+            }
+        ) {
+            Text("Normal")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Destructive
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="button" variant="destructive" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                 // TODO: click action
+            },
+            variant = ButtonVariant.Destructive
+        ) {
+            Text("Destructive")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Secondary
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="button" variant="secondary" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                 // TODO: click action
+            },
+            variant = ButtonVariant.Secondary
+        ) {
+            Text("Secondary")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Link
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="button" variant="link" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                // TODO: click action
+            },
+            variant = ButtonVariant.Link,
+        ) {
+            Text("Link")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Ghost
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="button" variant="ghost" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                // TODO: click action
+            },
+            variant = ButtonVariant.Ghost,
+        )
+        {
+            Text("Ghost")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Outline
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="button" variant="outline" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                // TODO: click action
+            },
+            variant = ButtonVariant.Outline,
+        ) {
+            Text("Outline")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Icon
+
+<TabPreview>
+<TabPreview.Panel name="Preview">
+<Preview name="button" variant="icon" />
+
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                // TODO: click action
+            },
+            size = ButtonSize.Icon,
+            variant = ButtonVariant.Outline
+        ) {
+            Icon(Icons.Default.AccountCircle, contentDescription = "Icon")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## With Icon
+
+<TabPreview>
+<TabPreview.Panel name="Preview">
+<Preview name="button" variant="with-icon" />
+
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                // TODO: click action
+            }
+        ) {
+            Icon(imageVector = Icons.Default.AccountCircle, contentDescription = "Icon")
+            Spacer(Modifier.width(8.dp))
+            Text("Account")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+</DocsPage>

@@ -1,0 +1,297 @@
+---
+title: Input
+description: Displays a form input field or a component that looks like an input field.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+import { Steps } from "@/components/mdx/steps"
+import { CodeWithFilename } from "@/components/mdx/code-with-filename"
+import { CodeConverter } from "@/components/docs/code-converter"
+
+
+<DocsPage title={frontmatter.title} description={frontmatter.description} path="pages/components/Input.md">
+
+## Basic Usage
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="input" variant="default" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Input
+
+@Composable
+fun Example() {
+    var nameTxt by remember { mutableStateOf("") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 24.dp, start = 16.dp, end = 16.dp),
+    ) {
+        Input(
+            value = nameTxt,
+            onValueChange = { nameTxt = it },
+            placeholder = "Enter your name",
+        )
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## With Leading Icon
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="input" variant="with-leading-and-support-text" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Input
+import com.shadcn.ui.components.InputVariant
+
+@Composable
+fun Example() {
+    var email by remember { mutableStateOf("") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 24.dp, start = 16.dp, end = 16.dp),
+    ) {
+        Input(
+            value = email,
+            onValueChange = { email = it },
+            placeholder = "Enter your email",
+            leadingIcon = { Icon(Icons.Default.Email, contentDescription = "Email icon") },
+            variant = InputVariant.Outlined,
+            supportingText = { Text("This is a helpful supporting text.") }
+        )
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## With Visual Transformation
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="input" variant="visual-transformation" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import com.shadcn.ui.components.Input
+
+@Composable
+fun Example() {
+    var password by remember { mutableStateOf("") }
+    var passwordVisible by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 24.dp, start = 16.dp, end = 16.dp),
+    ) {
+        Input(
+            value = password,
+            onValueChange = { password = it },
+            placeholder = "Password",
+            visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password,
+                imeAction = ImeAction.Done
+            ),
+            keyboardActions = KeyboardActions(onDone = {
+                // Handle done action, e.g., login
+                println("Password entered: $password")
+            }),
+            trailingIcon = {
+                val image = if (passwordVisible)
+                    Icons.Filled.Visibility
+                else Icons.Filled.VisibilityOff
+                Box(
+                    modifier = Modifier.clickable { passwordVisible = !passwordVisible }
+                ) {
+                    Icon(imageVector = image, contentDescription = if (passwordVisible) "Hide password" else "Show password")
+                }
+            }
+        )
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Underline
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="input" variant="underline" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Input
+import com.shadcn.ui.components.InputVariant
+
+@Composable
+fun Example() {
+    var multiLineText by remember {
+        mutableStateOf("This is a multi-line text field example.\nIt can expand to show more content.")
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 24.dp, start = 16.dp, end = 16.dp),
+    ) {
+        Input(
+            value = multiLineText,
+            onValueChange = { multiLineText = it },
+            placeholder = "Enter multi-line text",
+            singleLine = false,
+            maxLines = 5,
+            variant = InputVariant.Underlined,
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Default)
+        )
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Disabled
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="input" variant="disabled" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Input
+
+@Composable
+fun Example() {
+    var disabledText by remember { mutableStateOf("Disabled input") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 24.dp, start = 16.dp, end = 16.dp),
+    ) {
+        Input(
+            value = disabledText,
+            onValueChange = { },
+            enabled = false
+        )
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Read-only
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="input" variant="read-only" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Input
+
+@Composable
+fun Example() {
+    var readOnly by remember { mutableStateOf("Read-only input") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 24.dp, start = 16.dp, end = 16.dp),
+    ) {
+        Input(
+            value = readOnly,
+            onValueChange = { },
+            readOnly = true
+        )
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## With Error
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="input" variant="with-error" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Input
+
+@Composable
+fun Example() {
+    var text by remember { mutableStateOf("Input with error") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 24.dp, start = 16.dp, end = 16.dp),
+    ) {
+        Input(
+            value = text,
+            onValueChange = { text = it },
+            isError = true,
+            supportingText = { Text("Invalid input", color = MaterialTheme.colors.destructive) }
+        )
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+</DocsPage>

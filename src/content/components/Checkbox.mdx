@@ -1,0 +1,165 @@
+---
+title: Checkbox
+description: A control that allows the user to toggle between checked and not checked.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+import { Steps } from "@/components/mdx/steps"
+import { CodeWithFilename } from "@/components/mdx/code-with-filename"
+import { CodeConverter } from "@/components/docs/code-converter"
+
+
+<DocsPage title={frontmatter.title} description={frontmatter.description} path="pages/components/Checkbox.md">
+
+## Basic Usage
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="checkbox" variant="default" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Checkbox
+
+@Composable
+fun Example() {
+    var checkedState by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Checkbox(
+                checked = checkedState,
+                onCheckedChange = { checkedState = it }
+            )
+            Text("Basic Checkbox")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Disabled
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="checkbox" variant="disabled" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Checkbox
+
+fun Example() {
+    var checkedState by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Checkbox(
+                checked = checkedState,
+                onCheckedChange = { checkedState = it },
+                enabled = false
+            )
+            Text("Disabled Checkbox")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Custom Styles
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="checkbox" variant="custom-styles" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Checkbox
+
+fun Example() {
+    var checkedState by remember { mutableStateOf(false) }
+    val borderColor = if (checkedState) {
+        MaterialTheme.colors.chart3
+    } else {
+        MaterialTheme.colors.border
+    }
+    val background = if (checkedState) {
+        MaterialTheme.colors.chart1
+    } else {
+        MaterialTheme.colors.background
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Box(
+            modifier = Modifier
+                .border(1.dp, borderColor, MaterialTheme.shapes.small)
+                .background(background, MaterialTheme.shapes.small)
+        ) {
+            Row(
+                verticalAlignment = Alignment.Top,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.padding(12.dp)
+            ) {
+                Checkbox(
+                    checked = checkedState,
+                    onCheckedChange = { checkedState = it },
+                    colors = CheckboxDefaults.colors().copy(
+                        checkedColors = MaterialTheme.colors.chart3,
+                        checkedBorderColors = MaterialTheme.colors.chart3
+                    )
+                )
+                Column {
+                    Text("Enable Notification")
+                    Text(
+                        "You can enable or disable anytime",
+                        color = MaterialTheme.colors.mutedForeground
+                    )
+                }
+            }
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+</DocsPage>

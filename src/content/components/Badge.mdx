@@ -1,0 +1,243 @@
+---
+title: Badge
+description: Displays a badge or a component that looks like a badge.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+import { Steps } from "@/components/mdx/steps"
+import { CodeWithFilename } from "@/components/mdx/code-with-filename"
+import { CodeConverter } from "@/components/docs/code-converter"
+
+
+<DocsPage title={frontmatter.title} description={frontmatter.description} path="pages/components/Badge.md">
+
+## Basic Usage
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="badge" variant="notification-badge" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.material3.BadgedBox
+import com.shadcn.ui.components.Badge
+import com.shadcn.ui.components.BadgeVariant
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonSize
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        BadgedBox(
+            badge = {
+                Badge(
+                    variant = BadgeVariant.Destructive
+                ) {
+                    Text("8")
+                }
+            }
+        ) {
+            Button(
+                size = ButtonSize.Icon,
+                onClick = {}
+            ) {
+                Icon(Icons.Default.Notifications, contentDescription = "icon")
+            }
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Default
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="badge" variant="default" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.material3.BadgedBox
+import com.shadcn.ui.components.Badge
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Badge {
+            Text("Default")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Secondary
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="badge" variant="secondary" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.material3.BadgedBox
+import com.shadcn.ui.components.Badge
+import com.shadcn.ui.components.BadgeVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Badge(variant = BadgeVariant.Secondary) {
+            Text("Secondary")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Destructive
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="badge" variant="destructive" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.material3.BadgedBox
+import com.shadcn.ui.components.Badge
+import com.shadcn.ui.components.BadgeVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Badge(variant = BadgeVariant.Destructive) {
+            Text("Destructive")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Outline
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="badge" variant="outline" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.material3.BadgedBox
+import com.shadcn.ui.components.Badge
+import com.shadcn.ui.components.BadgeVariant
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Badge(variant = BadgeVariant.Outline) {
+            Text("Outline")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Custom Styles
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="badge" variant="custom" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.material3.BadgedBox
+import com.shadcn.ui.components.Badge
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Badge(backgroundColor = colors.chart3, roundedSize = 8.dp) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Icon(
+                    Icons.Default.CheckCircle,
+                    contentDescription = "icon",
+                    tint = Color.White
+                )
+                Text("Custom background")
+            }
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+</DocsPage>

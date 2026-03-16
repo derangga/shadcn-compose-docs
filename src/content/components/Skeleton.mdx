@@ -1,0 +1,71 @@
+---
+title: Skeleton
+description: Use to show a placeholder while content is loading.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+import { Steps } from "@/components/mdx/steps"
+import { CodeWithFilename } from "@/components/mdx/code-with-filename"
+import { CodeConverter } from "@/components/docs/code-converter"
+
+
+<DocsPage title={frontmatter.title} description={frontmatter.description} path="pages/components/Skeleton.md">
+
+## Usage
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="skeleton" variant="default" assetExtension=".gif" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Skeleton
+
+@Composable
+fun Example() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 24.dp, start = 16.dp, end = 16.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Skeleton(
+                modifier = Modifier
+                    .size(64.dp),
+                shape = CircleShape
+            )
+
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Skeleton(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(20.dp)
+                )
+
+                Skeleton(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(20.dp)
+                )
+            }
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+</DocsPage>

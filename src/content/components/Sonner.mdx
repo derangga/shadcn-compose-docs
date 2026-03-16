@@ -1,0 +1,210 @@
+---
+title: Sonner
+description: An opinionated toast component for Jetpack Compose.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+import { Steps } from "@/components/mdx/steps"
+import { CodeWithFilename } from "@/components/mdx/code-with-filename"
+import { CodeConverter } from "@/components/docs/code-converter"
+
+
+<DocsPage title={frontmatter.title} description={frontmatter.description} path="pages/components/Sonner.md">
+
+## Configuration
+
+To use a Sonner (snackbar) shadcn compose, you need to use `Scaffold` as a root composable component. The Sonner will be registered as global component. This is to prevent a common issue where Snackbars disappear when navigating between screens in Compose because each screen can have its own `Scaffold`. This idea was inspired by [Philipp Lackner](https://youtu.be/KFazs62lIkE?si=k88c6SstKwGdLWC6)
+
+```kotlin
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
+import com.shadcn.ui.themes.ShadcnTheme
+import com.shadcn.ui.components.sooner.ObserveAsEvent
+import com.shadcn.ui.components.sooner.SonnerHost
+import com.shadcn.ui.components.sooner.SonnerProvider
+import com.shadcn.ui.components.sooner.showSonner
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            ShadcnTheme {
+                val scope = rememberCoroutineScope()
+                val snackbarHostState = remember { SnackbarHostState() }
+                ObserveAsEvent(SonnerProvider.events) { event ->
+                    scope.launch {
+                        snackbarHostState.currentSnackbarData?.dismiss()
+                        val result = snackbarHostState.showSonner(event)
+
+                        if (result == SnackbarResult.ActionPerformed) {
+                            event.action?.execute()
+                        }
+                    }
+                }
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    snackbarHost = {
+                        SonnerHost(hostState = snackbarHostState)
+                    },
+                ) { ip ->
+                    // Your entire app navigation or root layout
+                    AppNavigation(modifier = Modifier.padding(ip))
+                }
+            }
+        }
+    }
+}
+```
+
+## Basic Usage
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="sonner" variant="default" assetExtension=".gif" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.sooner.SonnerAction
+import com.shadcn.ui.components.sooner.SonnerProvider
+
+@Composable
+fun ExamplePage() {
+    var showDropdown by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(start = 16.dp, end = 16.dp)
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Button(
+            onClick = {
+                scope.launch {
+                    SonnerProvider.showMessage(
+                        "This is a snackbar",
+                        "Something important just happened."
+                    )
+                }
+            }
+        ) {
+            Text("Open snackbar")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Destructive
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="sonner" variant="destructive" assetExtension=".gif" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.sooner.SonnerAction
+import com.shadcn.ui.components.sooner.SonnerProvider
+
+@Composable
+fun ExamplePage() {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(start = 16.dp, end = 16.dp)
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Button(
+            onClick = {
+                scope.launch {
+                    SonnerProvider.showError(
+                        "This is error event",
+                        "Something went wrong with your request",
+                        withDismissAction = true,
+                    )
+                }
+            }
+        ) {
+            Text("Open snackbar")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## With Action
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="sonner" variant="with-action" assetExtension=".gif" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.sooner.SonnerAction
+import com.shadcn.ui.components.sooner.SonnerProvider
+
+@Composable
+fun ExamplePage() {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(start = 16.dp, end = 16.dp)
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Button(
+            onClick = {
+                scope.launch {
+                    SonnerProvider.showMessage(
+                        "This is a snackbar",
+                        "Something important just happened.",
+                        action = SonnerAction("Action") {
+                            Toast.makeText(context, "Action clicked", Toast.LENGTH_SHORT).show()
+                        }
+                    )
+                }
+            }
+        ) {
+            Text("Open snackbar with action")
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+</DocsPage>

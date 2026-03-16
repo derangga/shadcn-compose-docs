@@ -1,0 +1,62 @@
+---
+title: Progress
+description: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+import { Steps } from "@/components/mdx/steps"
+import { CodeWithFilename } from "@/components/mdx/code-with-filename"
+import { CodeConverter } from "@/components/docs/code-converter"
+
+
+<DocsPage title={frontmatter.title} description={frontmatter.description} path="pages/components/Progress.md">
+
+## Usage
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="progress" variant="default" assetExtension=".gif" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Progress
+
+@Composable
+fun Example() {
+    var progress by remember { mutableFloatStateOf(0.0f) }
+
+    // Simulate progress change
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(1000)
+            progress = (progress + 0.1f) % 1.0f
+        }
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 24.dp, start = 16.dp, end = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Text(
+            text = "Progress: ${(progress * 100).toInt()}%",
+            color = MaterialTheme.colors.foreground,
+            style = TextStyle(fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        )
+        Progress(progress = progress)
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+</DocsPage>

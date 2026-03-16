@@ -1,9 +1,11 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "shadcn-compose-docs",
   "compatibility_date": "2025-10-09",
-  "assets": {
-    "directory": "./dist",
-    "not_found_handling": "single-page-application"
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "@tanstack/react-start/server-entry",
+  "observability": {
+    "enabled": true
   },
   "routes": [
     {

@@ -1,0 +1,73 @@
+---
+title: Popover
+description: Displays rich content in a portal, triggered by a button.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+import { Steps } from "@/components/mdx/steps"
+import { CodeWithFilename } from "@/components/mdx/code-with-filename"
+import { CodeConverter } from "@/components/docs/code-converter"
+
+
+<DocsPage title={frontmatter.title} description={frontmatter.description} path="pages/components/Popover.md">
+
+## Usage
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="popover" variant="default" assetExtension=".gif" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Button
+import com.shadcn.ui.components.ButtonSize
+import com.shadcn.ui.components.ButtonVariant
+import com.shadcn.ui.components.Popover
+
+@Composable
+fun Example() {
+    var showPopover by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 24.dp, start = 16.dp, end = 16.dp),
+    ) {
+        Popover(
+            open = showPopover,
+            trigger = {
+                Button(onClick = { showPopover = !showPopover }) {
+                    Text("Open Popover")
+                }
+            },
+        ) {
+            Column(
+                modifier = Modifier.padding(8.dp), // Inner padding for content
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text("Place any content here.")
+                Text("This is your popover content.")
+                Button(
+                    onClick = { showPopover = false },
+                    variant = ButtonVariant.Secondary,
+                    size = ButtonSize.Sm
+                ) {
+                    Text("Close")
+                }
+            }
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+</DocsPage>
