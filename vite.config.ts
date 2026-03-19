@@ -3,7 +3,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import viteReact from "@vitejs/plugin-react";
-import tsconfigPaths from "vite-tsconfig-paths";
 import mdx from "@mdx-js/rollup";
 import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
@@ -16,7 +15,6 @@ export default defineConfig({
   plugins: [
     cloudflare({ viteEnvironment: { name: "ssr" } }),
     tailwindcss(),
-    tsconfigPaths(),
     tanstackStart(),
     {
       enforce: "pre",
@@ -40,9 +38,7 @@ export default defineConfig({
     viteReact(),
   ],
   resolve: {
-    alias: {
-      "@": new URL("./src", import.meta.url).pathname,
-    },
+    tsconfigPaths: true,
   },
   ssr: {
     optimizeDeps: {
