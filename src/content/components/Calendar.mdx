@@ -129,6 +129,48 @@ fun Example() {
 
 </TabPreview>
 
+## Range Calendar
+
+Use `selectionMode = CalendarSelectionMode.Range` to display range calendar
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="calendar" variant="range-calendar" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Calendar
+import com.shadcn.ui.components.CalendarDefaults
+import com.shadcn.ui.components.CalendarSelectionMode
+
+fun Example() {
+    var selectedRange by remember { mutableStateOf<DateRange?>(null) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp, vertical = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Calendar(
+            selectionMode = CalendarSelectionMode.Range(
+              selectedRange = selectedRange,
+              onRangeSelected = { range ->
+                selectedRange = range
+              }
+          )
+        )
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
 ## Custom Styles
 
 You can also customize the calendar color style by passing `CalendarStyle` to the `colors`
