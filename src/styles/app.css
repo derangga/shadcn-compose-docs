@@ -269,3 +269,9 @@ code[data-theme*=" "] span {
 [data-rehype-pretty-code-figure] [data-line] {
   @apply px-4;
 }
+
+.maven-badge {
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
+}
