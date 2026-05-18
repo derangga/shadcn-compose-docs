@@ -22,6 +22,7 @@ export type Component =
   | "checkbox"
   | "collapsible"
   | "combobox"
+  | "data-table"
   | "date-picker"
   | "dialog"
   | "dropdown-menu"

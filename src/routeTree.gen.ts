@@ -32,6 +32,7 @@ import { Route as DocsComponentsDropdownMenuRouteImport } from './routes/docs/co
 import { Route as DocsComponentsDrawerRouteImport } from './routes/docs/components/drawer'
 import { Route as DocsComponentsDialogRouteImport } from './routes/docs/components/dialog'
 import { Route as DocsComponentsDatePickerRouteImport } from './routes/docs/components/date-picker'
+import { Route as DocsComponentsDataTableRouteImport } from './routes/docs/components/data-table'
 import { Route as DocsComponentsComboboxRouteImport } from './routes/docs/components/combobox'
 import { Route as DocsComponentsCollapsibleRouteImport } from './routes/docs/components/collapsible'
 import { Route as DocsComponentsCheckboxRouteImport } from './routes/docs/components/checkbox'
@@ -164,6 +165,11 @@ const DocsComponentsDatePickerRoute =
     path: '/components/date-picker',
     getParentRoute: () => DocsRouteRoute,
   } as any)
+const DocsComponentsDataTableRoute = DocsComponentsDataTableRouteImport.update({
+  id: '/components/data-table',
+  path: '/components/data-table',
+  getParentRoute: () => DocsRouteRoute,
+} as any)
 const DocsComponentsComboboxRoute = DocsComponentsComboboxRouteImport.update({
   id: '/components/combobox',
   path: '/components/combobox',
@@ -252,6 +258,7 @@ export interface FileRoutesByFullPath {
   '/docs/components/checkbox': typeof DocsComponentsCheckboxRoute
   '/docs/components/collapsible': typeof DocsComponentsCollapsibleRoute
   '/docs/components/combobox': typeof DocsComponentsComboboxRoute
+  '/docs/components/data-table': typeof DocsComponentsDataTableRoute
   '/docs/components/date-picker': typeof DocsComponentsDatePickerRoute
   '/docs/components/dialog': typeof DocsComponentsDialogRoute
   '/docs/components/drawer': typeof DocsComponentsDrawerRoute
@@ -290,6 +297,7 @@ export interface FileRoutesByTo {
   '/docs/components/checkbox': typeof DocsComponentsCheckboxRoute
   '/docs/components/collapsible': typeof DocsComponentsCollapsibleRoute
   '/docs/components/combobox': typeof DocsComponentsComboboxRoute
+  '/docs/components/data-table': typeof DocsComponentsDataTableRoute
   '/docs/components/date-picker': typeof DocsComponentsDatePickerRoute
   '/docs/components/dialog': typeof DocsComponentsDialogRoute
   '/docs/components/drawer': typeof DocsComponentsDrawerRoute
@@ -329,6 +337,7 @@ export interface FileRoutesById {
   '/docs/components/checkbox': typeof DocsComponentsCheckboxRoute
   '/docs/components/collapsible': typeof DocsComponentsCollapsibleRoute
   '/docs/components/combobox': typeof DocsComponentsComboboxRoute
+  '/docs/components/data-table': typeof DocsComponentsDataTableRoute
   '/docs/components/date-picker': typeof DocsComponentsDatePickerRoute
   '/docs/components/dialog': typeof DocsComponentsDialogRoute
   '/docs/components/drawer': typeof DocsComponentsDrawerRoute
@@ -369,6 +378,7 @@ export interface FileRouteTypes {
     | '/docs/components/checkbox'
     | '/docs/components/collapsible'
     | '/docs/components/combobox'
+    | '/docs/components/data-table'
     | '/docs/components/date-picker'
     | '/docs/components/dialog'
     | '/docs/components/drawer'
@@ -407,6 +417,7 @@ export interface FileRouteTypes {
     | '/docs/components/checkbox'
     | '/docs/components/collapsible'
     | '/docs/components/combobox'
+    | '/docs/components/data-table'
     | '/docs/components/date-picker'
     | '/docs/components/dialog'
     | '/docs/components/drawer'
@@ -445,6 +456,7 @@ export interface FileRouteTypes {
     | '/docs/components/checkbox'
     | '/docs/components/collapsible'
     | '/docs/components/combobox'
+    | '/docs/components/data-table'
     | '/docs/components/date-picker'
     | '/docs/components/dialog'
     | '/docs/components/drawer'
@@ -632,6 +644,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsComponentsDatePickerRouteImport
       parentRoute: typeof DocsRouteRoute
     }
+    '/docs/components/data-table': {
+      id: '/docs/components/data-table'
+      path: '/components/data-table'
+      fullPath: '/docs/components/data-table'
+      preLoaderRoute: typeof DocsComponentsDataTableRouteImport
+      parentRoute: typeof DocsRouteRoute
+    }
     '/docs/components/combobox': {
       id: '/docs/components/combobox'
       path: '/components/combobox'
@@ -744,6 +763,7 @@ interface DocsRouteRouteChildren {
   DocsComponentsCheckboxRoute: typeof DocsComponentsCheckboxRoute
   DocsComponentsCollapsibleRoute: typeof DocsComponentsCollapsibleRoute
   DocsComponentsComboboxRoute: typeof DocsComponentsComboboxRoute
+  DocsComponentsDataTableRoute: typeof DocsComponentsDataTableRoute
   DocsComponentsDatePickerRoute: typeof DocsComponentsDatePickerRoute
   DocsComponentsDialogRoute: typeof DocsComponentsDialogRoute
   DocsComponentsDrawerRoute: typeof DocsComponentsDrawerRoute
@@ -781,6 +801,7 @@ const DocsRouteRouteChildren: DocsRouteRouteChildren = {
   DocsComponentsCheckboxRoute: DocsComponentsCheckboxRoute,
   DocsComponentsCollapsibleRoute: DocsComponentsCollapsibleRoute,
   DocsComponentsComboboxRoute: DocsComponentsComboboxRoute,
+  DocsComponentsDataTableRoute: DocsComponentsDataTableRoute,
   DocsComponentsDatePickerRoute: DocsComponentsDatePickerRoute,
   DocsComponentsDialogRoute: DocsComponentsDialogRoute,
   DocsComponentsDrawerRoute: DocsComponentsDrawerRoute,

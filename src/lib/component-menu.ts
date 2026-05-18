@@ -52,6 +52,10 @@ const componentMenus = [
     url: "/docs/components/combobox",
   },
   {
+    title: "Data Table",
+    url: "/docs/components/data-table",
+  },
+  {
     title: "Date Picker",
     url: "/docs/components/date-picker",
   },
