@@ -1,0 +1,198 @@
+---
+title: Collapsible
+description: An interactive component which expands/collapses a panel.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+import { Steps } from "@/components/mdx/steps"
+import { CodeWithFilename } from "@/components/mdx/code-with-filename"
+import { CodeConverter } from "@/components/docs/code-converter"
+
+
+<DocsPage title={frontmatter.title} description={frontmatter.description} path="content/components/Collapsible.mdx">
+
+## Usage
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="collapsible" variant="default" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Collapsible
+
+@Composable
+fun Example() {
+    var open by remember { mutableStateOf(false) }
+
+    Collapsible(
+        open = open,
+        onOpenChange = { open = it },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        CollapsibleTrigger(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "@peduarte starred 3 repositories",
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colors.foreground
+            )
+            Text(
+                text = if (open) "Hide" else "Show",
+                color = MaterialTheme.colors.mutedForeground
+            )
+        }
+
+        CollapsibleContent(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp)
+        ) {
+            Text("@radix-ui/primitives", color = MaterialTheme.colors.foreground)
+            Spacer(modifier = Modifier.height(4.dp))
+            Text("@radix-ui/colors", color = MaterialTheme.colors.foreground)
+            Spacer(modifier = Modifier.height(4.dp))
+            Text("@stitches/react", color = MaterialTheme.colors.foreground)
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## With Chevron Indicator
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="collapsible" variant="with-chevron" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import com.shadcn.ui.components.Collapsible
+
+@Composable
+fun Example() {
+    var open by remember { mutableStateOf(false) }
+    val rotation by animateFloatAsState(targetValue = if (open) 180f else 0f)
+
+    Collapsible(
+        open = open,
+        onOpenChange = { open = it },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        CollapsibleTrigger(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Can I use this in my project?",
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colors.foreground
+            )
+            Icon(
+                imageVector = Icons.Filled.KeyboardArrowDown,
+                contentDescription = if (open) "Collapse" else "Expand",
+                tint = MaterialTheme.colors.mutedForeground,
+                modifier = Modifier.rotate(rotation)
+            )
+        }
+
+        CollapsibleContent(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp)
+        ) {
+            Text(
+                text = "Yes. Free to use for personal and commercial projects. No attribution required.",
+                color = MaterialTheme.colors.mutedForeground
+            )
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Disabled
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="collapsible" variant="disabled" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.Collapsible
+
+@Composable
+fun Example() {
+    var open by remember { mutableStateOf(false) }
+
+    Collapsible(
+        open = open,
+        onOpenChange = { open = it },
+        enabled = false,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        CollapsibleTrigger(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Disabled section",
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colors.mutedForeground
+            )
+            Text(
+                text = "Locked",
+                color = MaterialTheme.colors.mutedForeground
+            )
+        }
+
+        CollapsibleContent(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp)
+        ) {
+            Text(
+                text = "This content cannot be revealed because the trigger is disabled.",
+                color = MaterialTheme.colors.mutedForeground
+            )
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+</DocsPage>

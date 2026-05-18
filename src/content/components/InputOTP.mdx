@@ -1,0 +1,188 @@
+---
+title: Input OTP
+description: Accessible one-time password input rendered as separate character slots backed by a single hidden text field.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+import { Steps } from "@/components/mdx/steps"
+import { CodeWithFilename } from "@/components/mdx/code-with-filename"
+import { CodeConverter } from "@/components/docs/code-converter"
+
+
+<DocsPage title={frontmatter.title} description={frontmatter.description} path="content/components/InputOTP.mdx">
+
+## Usage
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="input-otp" variant="default" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.InputOTP
+
+@Composable
+fun Example() {
+    var otp by remember { mutableStateOf("") }
+
+    InputOTP(
+        value = otp,
+        onValueChange = { otp = it },
+        length = 6,
+    )
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## With Separator
+
+Insert a separator between groups of slots by providing the zero-based indices after which the
+separator should render. The example below splits a 6-digit code into two groups of three.
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="input-otp" variant="with-separator" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.InputOTP
+
+@Composable
+fun Example() {
+    var otp by remember { mutableStateOf("") }
+
+    InputOTP(
+        value = otp,
+        onValueChange = { otp = it },
+        length = 6,
+        separatorIndices = setOf(2),
+    )
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Custom Length
+
+Use the `length` parameter to change how many slots are rendered. Any input beyond the
+configured length is automatically trimmed.
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="input-otp" variant="custom-length" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.InputOTP
+
+@Composable
+fun Example() {
+    var otp by remember { mutableStateOf("") }
+
+    InputOTP(
+        value = otp,
+        onValueChange = { otp = it },
+        length = 4,
+    )
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Error
+
+Set `isError = true` to surface a validation error. The slot border switches to the theme's
+`destructive` color while the user corrects their input.
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="input-otp" variant="error" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.InputOTP
+
+@Composable
+fun Example() {
+    var otp by remember { mutableStateOf("123") }
+    val isError = otp.length < 6
+
+    Column {
+        InputOTP(
+            value = otp,
+            onValueChange = { otp = it },
+            length = 6,
+            isError = isError,
+        )
+
+        if (isError) {
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "Please enter the full 6-digit code.",
+                color = MaterialTheme.styles.destructive,
+                fontSize = 12.sp,
+            )
+        }
+    }
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Disabled
+
+Disable input by setting `enabled = false`. The field becomes non-interactive and is rendered
+with a muted appearance.
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="input-otp" variant="disabled" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import com.shadcn.ui.components.InputOTP
+
+@Composable
+fun Example() {
+    var otp by remember { mutableStateOf("123") }
+
+    InputOTP(
+        value = otp,
+        onValueChange = { otp = it },
+        length = 6,
+        enabled = false,
+    )
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+</DocsPage>

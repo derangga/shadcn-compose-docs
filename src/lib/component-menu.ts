@@ -36,8 +36,16 @@ const componentMenus = [
     url: "/docs/components/carousel",
   },
   {
+    title: "Chart",
+    url: "/docs/components/chart",
+  },
+  {
     title: "Checkbox",
     url: "/docs/components/checkbox",
+  },
+  {
+    title: "Collapsible",
+    url: "/docs/components/collapsible",
   },
   {
     title: "Combobox",
@@ -62,6 +70,10 @@ const componentMenus = [
   {
     title: "Input",
     url: "/docs/components/input",
+  },
+  {
+    title: "Input OTP",
+    url: "/docs/components/input-otp",
   },
   {
     title: "Popover",
