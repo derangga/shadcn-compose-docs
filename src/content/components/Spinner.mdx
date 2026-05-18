@@ -1,0 +1,204 @@
+---
+title: Spinner
+description: Indeterminate loading indicator with four animated visual variants — circular arc, bouncing rings, moon orbit, and pulsing dots.
+---
+
+import { DocsPage } from "@/components/mdx/docs-page"
+import { TabPreview } from "@/components/mdx/tab-preview"
+import { Preview } from "@/components/mdx/preview"
+
+<DocsPage title={frontmatter.title} description={frontmatter.description} path="content/components/Spinner.mdx">
+
+`Spinner` is a stateless indeterminate loading indicator. Choose from four visual styles via the `variant` parameter: `Circular` (default), `Bounce`, `Moon`, and `Pulse`. The `size` and `color` parameters apply to all variants; `strokeWidth` is respected only by `Circular` and `Moon`.
+
+## Basic usage
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="spinner" variant="default" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.runtime.Composable
+import com.shadcn.ui.components.Spinner
+
+@Composable
+fun Example() {
+    Spinner()
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Bounce variant
+
+Two concentric circles pulse in and out with a staggered half-cycle offset, producing a ripple effect.
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="spinner" variant="bounce" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.runtime.Composable
+import com.shadcn.ui.components.Spinner
+import com.shadcn.ui.components.SpinnerVariant
+
+@Composable
+fun Example() {
+    Spinner(variant = SpinnerVariant.Bounce)
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Moon variant
+
+A faint full-circle track is drawn at 30 % opacity; a short 30° arc orbits it continuously, evoking a crescent moon chasing its tail.
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="spinner" variant="moon" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.runtime.Composable
+import com.shadcn.ui.components.Spinner
+import com.shadcn.ui.components.SpinnerVariant
+
+@Composable
+fun Example() {
+    Spinner(variant = SpinnerVariant.Moon)
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Pulse variant
+
+Three dots scale in and out in sequence with a 160 ms stagger between each, creating a left-to-right wave.
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="spinner" variant="pulse" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.runtime.Composable
+import com.shadcn.ui.components.Spinner
+import com.shadcn.ui.components.SpinnerVariant
+
+@Composable
+fun Example() {
+    Spinner(variant = SpinnerVariant.Pulse)
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Custom size and color
+
+`size` controls the bounding box for all variants. `color` is drawn directly — pass `MaterialTheme.colorScheme.secondary` or any arbitrary `Color`.
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="spinner" variant="custom-size-color" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.dp
+import com.shadcn.ui.components.Spinner
+
+@Composable
+fun Example() {
+    Spinner(
+        size = 64.dp,
+        color = MaterialTheme.colorScheme.secondary,
+    )
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+## Custom stroke width
+
+`strokeWidth` affects only `Circular` and `Moon`. Increase it for a bolder look or decrease it for a hairline spinner.
+
+<TabPreview>
+
+<TabPreview.Panel name="Preview">
+<Preview name="spinner" variant="custom-stroke" />
+</TabPreview.Panel>
+
+<TabPreview.Panel name="Code">
+
+```kotlin
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.dp
+import com.shadcn.ui.components.Spinner
+import com.shadcn.ui.components.SpinnerVariant
+
+@Composable
+fun Example() {
+    Spinner(
+        variant = SpinnerVariant.Moon,
+        strokeWidth = 6.dp,
+    )
+}
+```
+
+</TabPreview.Panel>
+
+</TabPreview>
+
+> `strokeWidth` is ignored by `SpinnerVariant.Bounce` and `SpinnerVariant.Pulse` — those variants render filled circles, not stroked arcs.
+
+## API reference
+
+### Spinner
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `modifier` | `Modifier` | `Modifier` | Applied to the spinner container. |
+| `variant` | `SpinnerVariant` | `SpinnerVariant.Circular` | Visual style of the animation. |
+| `size` | `Dp` | `40.dp` | Overall bounding size of the spinner. |
+| `color` | `Color` | `MaterialTheme.styles.primary` | Primary colour used for the animation. |
+| `strokeWidth` | `Dp` | `3.dp` | Stroke width for `Circular` and `Moon` variants; ignored by `Bounce` and `Pulse`. |
+
+### SpinnerVariant
+
+| Value | Description |
+|---|---|
+| `Circular` | Rotating 270° arc — the default. Completes one revolution every 1 200 ms with linear easing. |
+| `Bounce` | Two concentric filled circles that scale in and out with a staggered half-cycle phase offset. |
+| `Moon` | Full-circle track at 30 % opacity with a short orbiting arc. One revolution every 1 000 ms with ease-in-out. |
+| `Pulse` | Three dots in a row, each scaling up and back down in sequence with 160 ms between each dot. |
+
+</DocsPage>

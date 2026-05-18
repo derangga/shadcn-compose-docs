@@ -36,5 +36,6 @@ export type Component =
   | "skeleton"
   | "slider"
   | "sonner"
+  | "spinner"
   | "switch"
   | "tabs";

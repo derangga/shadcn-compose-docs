@@ -1,6 +1,6 @@
 ---
 title: Collapsible
-description: An interactive component which expands/collapses a panel.
+description: A fully controlled single-section disclosure primitive with animated expand/collapse and scoped trigger and content slots.
 ---
 
 import { DocsPage } from "@/components/mdx/docs-page"
@@ -10,10 +10,11 @@ import { Steps } from "@/components/mdx/steps"
 import { CodeWithFilename } from "@/components/mdx/code-with-filename"
 import { CodeConverter } from "@/components/docs/code-converter"
 
-
 <DocsPage title={frontmatter.title} description={frontmatter.description} path="content/components/Collapsible.mdx">
 
-## Usage
+`Collapsible` is a controlled disclosure primitive — the caller owns the `open` state and receives toggle intent via `onOpenChange`. Inside the trailing `content` lambda, `CollapsibleScope` exposes two slots: `CollapsibleTrigger` (a clickable `Row`) and `CollapsibleContent` (an `AnimatedVisibility`-wrapped `Column` with 300 ms fade + expand/shrink animation).
+
+## Basic usage
 
 <TabPreview>
 
@@ -24,7 +25,24 @@ import { CodeConverter } from "@/components/docs/code-converter"
 <TabPreview.Panel name="Code">
 
 ```kotlin
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.shadcn.ui.components.Collapsible
+import com.shadcn.ui.themes.styles
 
 @Composable
 fun Example() {
@@ -33,36 +51,32 @@ fun Example() {
     Collapsible(
         open = open,
         onOpenChange = { open = it },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
     ) {
         CollapsibleTrigger(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
                 text = "@peduarte starred 3 repositories",
                 fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colors.foreground
+                color = MaterialTheme.styles.foreground,
             )
             Text(
                 text = if (open) "Hide" else "Show",
-                color = MaterialTheme.colors.mutedForeground
+                color = MaterialTheme.styles.mutedForeground,
             )
         }
 
         CollapsibleContent(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp)
+            modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
         ) {
-            Text("@radix-ui/primitives", color = MaterialTheme.colors.foreground)
+            Text("@radix-ui/primitives", color = MaterialTheme.styles.foreground)
             Spacer(modifier = Modifier.height(4.dp))
-            Text("@radix-ui/colors", color = MaterialTheme.colors.foreground)
+            Text("@radix-ui/colors", color = MaterialTheme.styles.foreground)
             Spacer(modifier = Modifier.height(4.dp))
-            Text("@stitches/react", color = MaterialTheme.colors.foreground)
+            Text("@stitches/react", color = MaterialTheme.styles.foreground)
         }
     }
 }
@@ -72,7 +86,9 @@ fun Example() {
 
 </TabPreview>
 
-## With Chevron Indicator
+## With chevron indicator
+
+Animate an `Icon` rotation with `animateFloatAsState` to give a visual hint of the open direction.
 
 <TabPreview>
 
@@ -84,9 +100,26 @@ fun Example() {
 
 ```kotlin
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.shadcn.ui.components.Collapsible
+import com.shadcn.ui.themes.styles
 
 @Composable
 fun Example() {
@@ -96,36 +129,32 @@ fun Example() {
     Collapsible(
         open = open,
         onOpenChange = { open = it },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
     ) {
         CollapsibleTrigger(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
                 text = "Can I use this in my project?",
                 fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colors.foreground
+                color = MaterialTheme.styles.foreground,
             )
             Icon(
                 imageVector = Icons.Filled.KeyboardArrowDown,
                 contentDescription = if (open) "Collapse" else "Expand",
-                tint = MaterialTheme.colors.mutedForeground,
-                modifier = Modifier.rotate(rotation)
+                tint = MaterialTheme.styles.mutedForeground,
+                modifier = Modifier.rotate(rotation),
             )
         }
 
         CollapsibleContent(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp)
+            modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
         ) {
             Text(
                 text = "Yes. Free to use for personal and commercial projects. No attribution required.",
-                color = MaterialTheme.colors.mutedForeground
+                color = MaterialTheme.styles.mutedForeground,
             )
         }
     }
@@ -138,6 +167,8 @@ fun Example() {
 
 ## Disabled
 
+Set `enabled = false` to prevent the trigger from responding to taps. The content stays in its current `open` state but cannot be changed by the user.
+
 <TabPreview>
 
 <TabPreview.Panel name="Preview">
@@ -147,7 +178,22 @@ fun Example() {
 <TabPreview.Panel name="Code">
 
 ```kotlin
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.shadcn.ui.components.Collapsible
+import com.shadcn.ui.themes.styles
 
 @Composable
 fun Example() {
@@ -157,34 +203,25 @@ fun Example() {
         open = open,
         onOpenChange = { open = it },
         enabled = false,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
     ) {
         CollapsibleTrigger(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
                 text = "Disabled section",
                 fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colors.mutedForeground
+                color = MaterialTheme.styles.mutedForeground,
             )
-            Text(
-                text = "Locked",
-                color = MaterialTheme.colors.mutedForeground
-            )
+            Text("Locked", color = MaterialTheme.styles.mutedForeground)
         }
 
-        CollapsibleContent(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp)
-        ) {
+        CollapsibleContent(modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
             Text(
                 text = "This content cannot be revealed because the trigger is disabled.",
-                color = MaterialTheme.colors.mutedForeground
+                color = MaterialTheme.styles.mutedForeground,
             )
         }
     }
@@ -194,5 +231,37 @@ fun Example() {
 </TabPreview.Panel>
 
 </TabPreview>
+
+## API reference
+
+### Collapsible
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `open` | `Boolean` | — | Whether the content is currently expanded. Owned by the caller. |
+| `onOpenChange` | `(Boolean) -> Unit` | — | Invoked with the requested new open state when the trigger is tapped. |
+| `modifier` | `Modifier` | `Modifier` | Applied to the root `Column`. |
+| `enabled` | `Boolean` | `true` | When `false`, the trigger does not respond to taps. |
+| `content` | `@Composable CollapsibleScope.() -> Unit` | — | Slot for `CollapsibleTrigger` and `CollapsibleContent`. |
+
+### CollapsibleTrigger
+
+Scoped to `CollapsibleScope`. A `Row` that toggles `open` on tap.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `modifier` | `Modifier` | `Modifier` | Applied to the trigger `Row`. |
+| `horizontalArrangement` | `Arrangement.Horizontal` | `Arrangement.Start` | Horizontal arrangement of the trigger's children. |
+| `verticalAlignment` | `Alignment.Vertical` | `Alignment.Top` | Vertical alignment of the trigger's children. |
+| `content` | `@Composable RowScope.() -> Unit` | — | Trigger content. |
+
+### CollapsibleContent
+
+Scoped to `CollapsibleScope`. An `AnimatedVisibility` wrapper that fades and expands/shrinks over 300 ms.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `modifier` | `Modifier` | `Modifier` | Applied to the inner `Column`. |
+| `content` | `@Composable ColumnScope.() -> Unit` | — | Content revealed when `open` is `true`. |
 
 </DocsPage>

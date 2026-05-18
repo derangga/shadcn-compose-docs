@@ -18,6 +18,7 @@ import { Route as DocsInstallationRouteImport } from './routes/docs/installation
 import { Route as DocsComponentsIndexRouteImport } from './routes/docs/components/index'
 import { Route as DocsComponentsTabsRouteImport } from './routes/docs/components/tabs'
 import { Route as DocsComponentsSwitchRouteImport } from './routes/docs/components/switch'
+import { Route as DocsComponentsSpinnerRouteImport } from './routes/docs/components/spinner'
 import { Route as DocsComponentsSonnerRouteImport } from './routes/docs/components/sonner'
 import { Route as DocsComponentsSliderRouteImport } from './routes/docs/components/slider'
 import { Route as DocsComponentsSkeletonRouteImport } from './routes/docs/components/skeleton'
@@ -90,6 +91,11 @@ const DocsComponentsTabsRoute = DocsComponentsTabsRouteImport.update({
 const DocsComponentsSwitchRoute = DocsComponentsSwitchRouteImport.update({
   id: '/components/switch',
   path: '/components/switch',
+  getParentRoute: () => DocsRouteRoute,
+} as any)
+const DocsComponentsSpinnerRoute = DocsComponentsSpinnerRouteImport.update({
+  id: '/components/spinner',
+  path: '/components/spinner',
   getParentRoute: () => DocsRouteRoute,
 } as any)
 const DocsComponentsSonnerRoute = DocsComponentsSonnerRouteImport.update({
@@ -273,6 +279,7 @@ export interface FileRoutesByFullPath {
   '/docs/components/skeleton': typeof DocsComponentsSkeletonRoute
   '/docs/components/slider': typeof DocsComponentsSliderRoute
   '/docs/components/sonner': typeof DocsComponentsSonnerRoute
+  '/docs/components/spinner': typeof DocsComponentsSpinnerRoute
   '/docs/components/switch': typeof DocsComponentsSwitchRoute
   '/docs/components/tabs': typeof DocsComponentsTabsRoute
   '/docs/components/': typeof DocsComponentsIndexRoute
@@ -312,6 +319,7 @@ export interface FileRoutesByTo {
   '/docs/components/skeleton': typeof DocsComponentsSkeletonRoute
   '/docs/components/slider': typeof DocsComponentsSliderRoute
   '/docs/components/sonner': typeof DocsComponentsSonnerRoute
+  '/docs/components/spinner': typeof DocsComponentsSpinnerRoute
   '/docs/components/switch': typeof DocsComponentsSwitchRoute
   '/docs/components/tabs': typeof DocsComponentsTabsRoute
   '/docs/components': typeof DocsComponentsIndexRoute
@@ -352,6 +360,7 @@ export interface FileRoutesById {
   '/docs/components/skeleton': typeof DocsComponentsSkeletonRoute
   '/docs/components/slider': typeof DocsComponentsSliderRoute
   '/docs/components/sonner': typeof DocsComponentsSonnerRoute
+  '/docs/components/spinner': typeof DocsComponentsSpinnerRoute
   '/docs/components/switch': typeof DocsComponentsSwitchRoute
   '/docs/components/tabs': typeof DocsComponentsTabsRoute
   '/docs/components/': typeof DocsComponentsIndexRoute
@@ -393,6 +402,7 @@ export interface FileRouteTypes {
     | '/docs/components/skeleton'
     | '/docs/components/slider'
     | '/docs/components/sonner'
+    | '/docs/components/spinner'
     | '/docs/components/switch'
     | '/docs/components/tabs'
     | '/docs/components/'
@@ -432,6 +442,7 @@ export interface FileRouteTypes {
     | '/docs/components/skeleton'
     | '/docs/components/slider'
     | '/docs/components/sonner'
+    | '/docs/components/spinner'
     | '/docs/components/switch'
     | '/docs/components/tabs'
     | '/docs/components'
@@ -471,6 +482,7 @@ export interface FileRouteTypes {
     | '/docs/components/skeleton'
     | '/docs/components/slider'
     | '/docs/components/sonner'
+    | '/docs/components/spinner'
     | '/docs/components/switch'
     | '/docs/components/tabs'
     | '/docs/components/'
@@ -544,6 +556,13 @@ declare module '@tanstack/react-router' {
       path: '/components/switch'
       fullPath: '/docs/components/switch'
       preLoaderRoute: typeof DocsComponentsSwitchRouteImport
+      parentRoute: typeof DocsRouteRoute
+    }
+    '/docs/components/spinner': {
+      id: '/docs/components/spinner'
+      path: '/components/spinner'
+      fullPath: '/docs/components/spinner'
+      preLoaderRoute: typeof DocsComponentsSpinnerRouteImport
       parentRoute: typeof DocsRouteRoute
     }
     '/docs/components/sonner': {
@@ -778,6 +797,7 @@ interface DocsRouteRouteChildren {
   DocsComponentsSkeletonRoute: typeof DocsComponentsSkeletonRoute
   DocsComponentsSliderRoute: typeof DocsComponentsSliderRoute
   DocsComponentsSonnerRoute: typeof DocsComponentsSonnerRoute
+  DocsComponentsSpinnerRoute: typeof DocsComponentsSpinnerRoute
   DocsComponentsSwitchRoute: typeof DocsComponentsSwitchRoute
   DocsComponentsTabsRoute: typeof DocsComponentsTabsRoute
   DocsComponentsIndexRoute: typeof DocsComponentsIndexRoute
@@ -816,6 +836,7 @@ const DocsRouteRouteChildren: DocsRouteRouteChildren = {
   DocsComponentsSkeletonRoute: DocsComponentsSkeletonRoute,
   DocsComponentsSliderRoute: DocsComponentsSliderRoute,
   DocsComponentsSonnerRoute: DocsComponentsSonnerRoute,
+  DocsComponentsSpinnerRoute: DocsComponentsSpinnerRoute,
   DocsComponentsSwitchRoute: DocsComponentsSwitchRoute,
   DocsComponentsTabsRoute: DocsComponentsTabsRoute,
   DocsComponentsIndexRoute: DocsComponentsIndexRoute,

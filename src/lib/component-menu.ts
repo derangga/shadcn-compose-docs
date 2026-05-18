@@ -112,6 +112,10 @@ const componentMenus = [
     url: "/docs/components/sonner",
   },
   {
+    title: "Spinner",
+    url: "/docs/components/spinner",
+  },
+  {
     title: "Switch",
     url: "/docs/components/switch",
   },
